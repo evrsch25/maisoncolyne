@@ -1,0 +1,84 @@
+{
+  "site": {
+    "name": "Colyne Photographe",
+    "tagline": "Photographe professionnelle à Oye-plage",
+    "description": "Capturer l'essence de vos moments précieux avec sensibilité et créativité",
+    "location": "Oye-plage, France"
+  },
+  "contact": {
+    "email": "contact@colynephotographe.fr",
+    "phone": "+33 6 12 34 56 78",
+    "address": "Oye-plage, 62215, France",
+    "messenger": "https://m.me/colynephotographe"
+  },
+  "social": {
+    "instagram": "https://instagram.com/colynephotographe",
+    "facebook": "https://facebook.com/colynephotographe",
+    "pinterest": "https://pinterest.com/colynephotographe"
+  },
+  "about": {
+    "shortDescription": "Photographe passionnée basée à Oye-plage, je capture vos moments les plus précieux avec authenticité et douceur.",
+    "fullDescription": "Depuis plus de 10 ans, j'immortalise les émotions et les instants uniques de la vie. Ma démarche artistique se concentre sur la lumière naturelle, l'authenticité des moments et la beauté simple du quotidien.",
+    "philosophy": "Chaque séance photo est une expérience unique, un moment de partage et de complicité. Mon objectif est de vous mettre à l'aise pour révéler votre vraie beauté.",
+    "equipment": [
+      {
+        "name": "Canon EOS R5",
+        "description": "Pour une qualité d'image exceptionnelle"
+      },
+      {
+        "name": "Objectif 50mm f/1.2",
+        "description": "Pour un bokeh naturel et doux"
+      },
+      {
+        "name": "Objectif 85mm f/1.8",
+        "description": "Idéal pour les portraits"
+      }
+    ]
+  },
+  "testimonials": [
+    {
+      "id": 1,
+      "name": "Sophie M.",
+      "service": "Séance grossesse",
+      "text": "Une expérience inoubliable ! Colyne a su capturer la magie de ce moment unique avec beaucoup de douceur et de professionnalisme.",
+      "rating": 5
+    },
+    {
+      "id": 2,
+      "name": "Julie & Marc",
+      "service": "Mariage",
+      "text": "Des photos magnifiques qui nous font revivre notre plus beau jour à chaque fois. Merci pour votre talent et votre bienveillance.",
+      "rating": 5
+    },
+    {
+      "id": 3,
+      "name": "Émilie L.",
+      "service": "Portrait famille",
+      "text": "Colyne a su mettre toute la famille à l'aise, même nos enfants les plus timides ! Les photos sont splendides.",
+      "rating": 5
+    }
+  ],
+  "faq": [
+    {
+      "question": "Combien de temps à l'avance dois-je réserver ?",
+      "answer": "Je recommande de réserver au moins 2-3 semaines à l'avance, surtout pour les week-ends."
+    },
+    {
+      "question": "Quand vais-je recevoir mes photos ?",
+      "answer": "Vous recevrez vos photos retouchées dans un délai de 2 à 3 semaines après la séance. Un aperçu peut être envoyé plus rapidement sur demande."
+    },
+    {
+      "question": "Puis-je choisir les photos que je souhaite garder ?",
+      "answer": "Oui, je vous partage d'abord une sélection de photos et vous pourrez choisir celles que vous souhaitez voir retouchées selon votre formule."
+    },
+    {
+      "question": "Que se passe-t-il en cas de mauvais temps pour une séance extérieure ?",
+      "answer": "Nous pouvons reporter la séance sans frais. Je vous contacte la veille pour confirmer ou reprogrammer selon la météo."
+    },
+    {
+      "question": "Proposez-vous des albums photo ?",
+      "answer": "Oui, je propose différents formats d'albums premium en option. Contactez-moi pour plus de détails et tarifs."
+    }
+  ]
+}
+

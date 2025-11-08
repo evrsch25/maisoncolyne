@@ -1,0 +1,91 @@
+[
+  {
+    "id": 1,
+    "slug": "preparer-seance-photo-famille",
+    "title": "Comment préparer votre séance photo famille ?",
+    "category": "Conseils",
+    "author": "Colyne",
+    "date": "2025-03-15",
+    "excerpt": "Découvrez mes meilleurs conseils pour que votre séance photo en famille soit une réussite et un moment de plaisir partagé.",
+    "content": "Une séance photo en famille est bien plus qu'un simple rendez-vous photographique...",
+    "featured_image": "/images/blog/famille-preparation.jpg",
+    "gallery": [
+      "/images/blog/famille-preparation-1.jpg",
+      "/images/blog/famille-preparation-2.jpg",
+      "/images/blog/famille-preparation-3.jpg"
+    ],
+    "tags": ["famille", "conseils", "préparation"],
+    "featured": true
+  },
+  {
+    "id": 2,
+    "slug": "meilleur-moment-photos-grossesse",
+    "title": "Quel est le meilleur moment pour des photos de grossesse ?",
+    "category": "Grossesse",
+    "author": "Colyne",
+    "date": "2025-02-28",
+    "excerpt": "Entre le 7ème et 8ème mois de grossesse, votre ventre est bien arrondi sans que vous soyez trop fatiguée. C'est le moment idéal !",
+    "content": "La période idéale pour une séance photo de grossesse se situe généralement entre la 30ème et la 34ème semaine...",
+    "featured_image": "/images/blog/grossesse-timing.jpg",
+    "gallery": [
+      "/images/blog/grossesse-timing-1.jpg",
+      "/images/blog/grossesse-timing-2.jpg"
+    ],
+    "tags": ["grossesse", "timing", "conseils"],
+    "featured": true
+  },
+  {
+    "id": 3,
+    "slug": "choisir-tenues-seance-photo",
+    "title": "Comment choisir vos tenues pour une séance photo ?",
+    "category": "Conseils",
+    "author": "Colyne",
+    "date": "2025-02-10",
+    "excerpt": "Les tenues jouent un rôle important dans la réussite de vos photos. Voici mes recommandations pour un rendu harmonieux.",
+    "content": "Le choix des tenues est crucial pour une séance photo réussie. Privilégiez des couleurs douces et harmonieuses...",
+    "featured_image": "/images/blog/tenues-conseils.jpg",
+    "gallery": [
+      "/images/blog/tenues-1.jpg",
+      "/images/blog/tenues-2.jpg",
+      "/images/blog/tenues-3.jpg"
+    ],
+    "tags": ["conseils", "style", "tenues"],
+    "featured": false
+  },
+  {
+    "id": 4,
+    "slug": "coulisses-seance-nouveau-ne",
+    "title": "Les coulisses d'une séance nouveau-né",
+    "category": "Nouveau-né",
+    "author": "Colyne",
+    "date": "2025-01-20",
+    "excerpt": "Découvrez comment se déroule une séance photo nouveau-né, de la préparation au résultat final.",
+    "content": "Une séance nouveau-né demande beaucoup de patience, de douceur et d'organisation...",
+    "featured_image": "/images/blog/nouveau-ne-coulisses.jpg",
+    "gallery": [
+      "/images/blog/nouveau-ne-coulisses-1.jpg",
+      "/images/blog/nouveau-ne-coulisses-2.jpg"
+    ],
+    "tags": ["nouveau-né", "coulisses", "workflow"],
+    "featured": false
+  },
+  {
+    "id": 5,
+    "slug": "importance-lumiere-naturelle",
+    "title": "L'importance de la lumière naturelle en photographie",
+    "category": "Technique",
+    "author": "Colyne",
+    "date": "2024-12-15",
+    "excerpt": "La lumière naturelle est mon outil préféré pour créer des images douces et intemporelles. Découvrez pourquoi.",
+    "content": "En tant que photographe, la lumière est mon principal outil de travail. J'ai développé une véritable passion pour la lumière naturelle...",
+    "featured_image": "/images/blog/lumiere-naturelle.jpg",
+    "gallery": [
+      "/images/blog/lumiere-1.jpg",
+      "/images/blog/lumiere-2.jpg",
+      "/images/blog/lumiere-3.jpg"
+    ],
+    "tags": ["technique", "lumière", "style"],
+    "featured": true
+  }
+]
+

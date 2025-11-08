@@ -1,0 +1,181 @@
+[
+  {
+    "id": 1,
+    "slug": "seance-grossesse",
+    "title": "Séance Grossesse",
+    "category": "maternite",
+    "shortDescription": "Immortalisez la magie de l'attente",
+    "description": "La grossesse est un moment unique dans une vie. Je capture cette période magique avec douceur et poésie, en mettant en valeur votre beauté naturelle et l'émotion de l'attente.",
+    "basePrice": "À partir de 150€",
+    "priceDetails": {
+      "solo": 150,
+      "couple": 180,
+      "famille": 200
+    },
+    "duration": "1h30",
+    "location": "En studio ou en extérieur",
+    "included": [
+      "Séance photo de 1h30",
+      "15 photos retouchées en haute définition",
+      "Galerie privée en ligne",
+      "Conseils vestimentaires",
+      "Possibilité d'inclure le conjoint et/ou les enfants"
+    ],
+    "featured": true,
+    "image": "/images/grossesse-hero.jpg",
+    "gallery": [
+      "/images/grossesse-1.jpg",
+      "/images/grossesse-2.jpg",
+      "/images/grossesse-3.jpg"
+    ]
+  },
+  {
+    "id": 2,
+    "slug": "nouveau-ne",
+    "title": "Nouveau-né",
+    "category": "maternite",
+    "shortDescription": "Les premiers jours de vie de bébé",
+    "description": "Les premiers jours de votre bébé sont si précieux et passent si vite. Je capture cette douceur éphémère avec délicatesse, dans le confort de votre foyer.",
+    "basePrice": "À partir de 200€",
+    "priceDetails": {
+      "nouveau-ne": 200,
+      "avec-parents": 230,
+      "avec-fratrie": 250
+    },
+    "duration": "2h à 3h",
+    "location": "À domicile (idéalement entre 5 et 15 jours après la naissance)",
+    "included": [
+      "Séance à domicile de 2h à 3h",
+      "20 photos retouchées en haute définition",
+      "Galerie privée en ligne",
+      "Accessoires et décors fournis",
+      "Ambiance calme et respectueuse du rythme de bébé"
+    ],
+    "featured": true,
+    "image": "/images/nouveau-ne-hero.jpg",
+    "gallery": [
+      "/images/nouveau-ne-1.jpg",
+      "/images/nouveau-ne-2.jpg"
+    ]
+  },
+  {
+    "id": 3,
+    "slug": "famille",
+    "title": "Portrait Famille",
+    "category": "famille",
+    "shortDescription": "Vos souvenirs en famille",
+    "description": "Rassemblez toute la famille pour une séance conviviale et naturelle. Je capture la complicité et l'amour qui vous unit, pour des souvenirs qui traverseront le temps.",
+    "basePrice": "À partir de 180€",
+    "priceDetails": {
+      "petite-famille": 180,
+      "grande-famille": 220,
+      "multi-generationnelle": 250
+    },
+    "duration": "1h30",
+    "location": "En extérieur ou en studio",
+    "included": [
+      "Séance de 1h30",
+      "20 photos retouchées en haute définition",
+      "Galerie privée en ligne",
+      "Conseils pour coordonner vos tenues",
+      "Moments spontanés et posés"
+    ],
+    "featured": true,
+    "image": "/images/famille-hero.jpg",
+    "gallery": [
+      "/images/famille-1.jpg",
+      "/images/famille-2.jpg",
+      "/images/famille-3.jpg"
+    ]
+  },
+  {
+    "id": 4,
+    "slug": "couple",
+    "title": "Séance Couple",
+    "category": "couple",
+    "shortDescription": "Votre amour sublimé",
+    "description": "Que ce soit pour célébrer vos fiançailles, votre anniversaire ou simplement votre amour, je capture votre complicité dans des images tendres et authentiques.",
+    "basePrice": "À partir de 160€",
+    "priceDetails": {
+      "simple": 160,
+      "extended": 200
+    },
+    "duration": "1h à 1h30",
+    "location": "En extérieur (plage, ville, nature)",
+    "included": [
+      "Séance de 1h à 1h30",
+      "15 photos retouchées en haute définition",
+      "Galerie privée en ligne",
+      "Repérage des lieux si nécessaire",
+      "Ambiance décontractée et romantique"
+    ],
+    "featured": false,
+    "image": "/images/couple-hero.jpg",
+    "gallery": [
+      "/images/couple-1.jpg",
+      "/images/couple-2.jpg"
+    ]
+  },
+  {
+    "id": 5,
+    "slug": "mariage",
+    "title": "Mariage",
+    "category": "mariage",
+    "shortDescription": "Le plus beau jour de votre vie",
+    "description": "Votre mariage mérite d'être immortalisé avec soin et créativité. Je documente votre journée avec discrétion et sensibilité, du matin jusqu'à la soirée.",
+    "basePrice": "Sur devis",
+    "priceDetails": {
+      "formule-emotion": 1200,
+      "formule-complete": 1800,
+      "formule-premium": 2500
+    },
+    "duration": "Journée complète",
+    "location": "Sur vos lieux de réception",
+    "included": [
+      "Couverture complète de votre journée",
+      "Rencontre préparatoire",
+      "Photos des préparatifs, cérémonie, vin d'honneur, soirée",
+      "Galerie en ligne sécurisée",
+      "Entre 300 et 600 photos retouchées selon formule",
+      "Album photo premium en option"
+    ],
+    "featured": true,
+    "image": "/images/mariage-hero.jpg",
+    "gallery": [
+      "/images/mariage-1.jpg",
+      "/images/mariage-2.jpg",
+      "/images/mariage-3.jpg",
+      "/images/mariage-4.jpg"
+    ]
+  },
+  {
+    "id": 6,
+    "slug": "portrait-individuel",
+    "title": "Portrait Individuel",
+    "category": "portrait",
+    "shortDescription": "Révélez votre personnalité",
+    "description": "Un portrait qui vous ressemble, pour vous-même, pour offrir, ou pour valoriser votre image professionnelle. Une séance sur mesure qui révèle votre personnalité unique.",
+    "basePrice": "À partir de 120€",
+    "priceDetails": {
+      "basique": 120,
+      "professionnel": 180,
+      "artistique": 220
+    },
+    "duration": "1h",
+    "location": "En studio ou en extérieur",
+    "included": [
+      "Séance de 1h",
+      "10 photos retouchées en haute définition",
+      "Galerie privée en ligne",
+      "Conseils look et posture",
+      "Plusieurs tenues possibles"
+    ],
+    "featured": false,
+    "image": "/images/portrait-hero.jpg",
+    "gallery": [
+      "/images/portrait-1.jpg",
+      "/images/portrait-2.jpg"
+    ]
+  }
+]
+
