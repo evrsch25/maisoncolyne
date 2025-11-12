@@ -20,17 +20,23 @@ const app = express();
 // Middleware de sécurité
 app.use(helmet());
 
-// CORS - Autoriser tous les ports localhost en développement
+const corsWhitelist = [
+  'http://localhost:5173',
+  'http://localhost:5000',
+  process.env.CLIENT_URL,
+  process.env.FRONTEND_URL,
+  process.env.ADMIN_URL,
+  'https://maisoncolyne.fr',
+  'https://www.maisoncolyne.fr',
+  'https://api.maisoncolyne.fr'
+].filter(Boolean);
+
 app.use(cors({
-  origin: function (origin, callback) {
-    // Autoriser les requêtes sans origine (comme Postman) ou les origines localhost
-    if (!origin || /^http:\/\/localhost(:\d+)?$/.test(origin)) {
-      callback(null, true);
-    } else if (process.env.CLIENT_URL && origin === process.env.CLIENT_URL) {
-      callback(null, true);
-    } else {
-      callback(new Error('Non autorisé par CORS'));
+  origin(origin, callback) {
+    if (!origin || corsWhitelist.includes(origin)) {
+      return callback(null, true);
     }
+    return callback(new Error('Non autorisé par CORS'));
   },
   credentials: true
 }));
