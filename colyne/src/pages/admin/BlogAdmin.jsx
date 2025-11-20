@@ -143,7 +143,7 @@ const BlogAdmin = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-
+    
     if (!formData.title || !formData.slug) {
       alert('Veuillez remplir tous les champs obligatoires');
       return;
@@ -265,8 +265,8 @@ const BlogAdmin = () => {
                 {!article.published && (
                   <span className="bg-gray-500 text-white text-xs px-2 py-1 rounded">Brouillon</span>
                 )}
-              </div>
-            </div>
+                      </div>
+                    </div>
             <div className="p-4">
               <div className="text-xs text-gray-500 mb-1">{article.category}</div>
               <h3 className="font-bold text-lg text-gray-900 mb-1 line-clamp-2">{article.title}</h3>
@@ -275,24 +275,24 @@ const BlogAdmin = () => {
               </p>
               <p className="text-sm text-gray-600 mb-3 line-clamp-2">{article.excerpt}</p>
               <div className="flex gap-2">
-                <button
+                      <button
                   onClick={() => openModal(article)}
                   className="flex-1 py-2 px-3 bg-blue-50 text-blue-600 rounded hover:bg-blue-100 transition flex items-center justify-center gap-1"
-                >
+                      >
                   <Pencil size={16} />
                   Modifier
-                </button>
-                <button
+                      </button>
+                      <button
                   onClick={() => handleDelete(article._id)}
                   className="flex-1 py-2 px-3 bg-red-50 text-red-600 rounded hover:bg-red-100 transition flex items-center justify-center gap-1"
-                >
-                  <Trash2 size={16} />
+                      >
+                        <Trash2 size={16} />
                   Supprimer
-                </button>
-              </div>
+                      </button>
+                    </div>
             </div>
           </motion.div>
-        ))}
+              ))}
       </div>
 
       {articles.length === 0 && (
@@ -333,56 +333,56 @@ const BlogAdmin = () => {
                 <div className="space-y-4">
                   <h3 className="font-semibold text-lg text-gray-900">Informations de base</h3>
                   
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                    <div>
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                  <div>
                       <label className="block text-sm font-medium text-gray-700 mb-2">Titre *</label>
-                      <input
-                        type="text"
-                        value={formData.title}
+                    <input
+                      type="text"
+                      value={formData.title}
                         onChange={(e) => setFormData({ ...formData, title: e.target.value })}
-                        required
-                        className="input-field"
-                      />
-                    </div>
-                    
-                    <div>
-                      <label className="block text-sm font-medium text-gray-700 mb-2">Slug *</label>
-                      <input
-                        type="text"
-                        value={formData.slug}
-                        onChange={(e) => setFormData({ ...formData, slug: e.target.value })}
-                        required
-                        className="input-field"
-                      />
-                    </div>
+                      required
+                      className="input-field"
+                    />
                   </div>
 
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                    <div>
+                  <div>
+                      <label className="block text-sm font-medium text-gray-700 mb-2">Slug *</label>
+                    <input
+                      type="text"
+                      value={formData.slug}
+                        onChange={(e) => setFormData({ ...formData, slug: e.target.value })}
+                      required
+                      className="input-field"
+                    />
+                  </div>
+                </div>
+
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                  <div>
                       <label className="block text-sm font-medium text-gray-700 mb-2">Catégorie *</label>
                       <input
                         type="text"
-                        value={formData.category}
+                      value={formData.category}
                         onChange={(e) => setFormData({ ...formData, category: e.target.value })}
                         required
-                        className="input-field"
+                      className="input-field"
                         placeholder="Ex: Maternité, Conseils"
                       />
-                    </div>
-                    
-                    <div>
+                  </div>
+
+                  <div>
                       <label className="block text-sm font-medium text-gray-700 mb-2">Date de publication *</label>
-                      <input
+                    <input
                         type="date"
                         value={formData.date}
                         onChange={(e) => setFormData({ ...formData, date: e.target.value })}
                         required
-                        className="input-field"
-                      />
-                    </div>
+                      className="input-field"
+                    />
                   </div>
+                </div>
 
-                  <div>
+                <div>
                     <label className="block text-sm font-medium text-gray-700 mb-2">Auteur</label>
                     <input
                       type="text"
@@ -394,34 +394,34 @@ const BlogAdmin = () => {
 
                   <div>
                     <label className="block text-sm font-medium text-gray-700 mb-2">Extrait *</label>
-                    <textarea
-                      value={formData.excerpt}
+                  <textarea
+                    value={formData.excerpt}
                       onChange={(e) => setFormData({ ...formData, excerpt: e.target.value })}
-                      required
+                    required
                       maxLength={300}
                       rows={3}
                       className="input-field"
                       placeholder="Résumé de l'article (max 300 caractères)"
-                    />
-                  </div>
+                  />
+                </div>
 
-                  <div>
+                <div>
                     <label className="block text-sm font-medium text-gray-700 mb-2">Contenu *</label>
-                    <textarea
-                      value={formData.content}
+                  <textarea
+                    value={formData.content}
                       onChange={(e) => setFormData({ ...formData, content: e.target.value })}
-                      required
-                      rows={8}
+                    required
+                    rows={8}
                       className="input-field"
                       placeholder="Contenu complet de l'article..."
-                    />
-                  </div>
+                  />
+                </div>
 
                   <div className="flex items-center gap-6">
                     <label className="flex items-center gap-2">
-                      <input
-                        type="checkbox"
-                        checked={formData.featured}
+                  <input
+                    type="checkbox"
+                    checked={formData.featured}
                         onChange={(e) => setFormData({ ...formData, featured: e.target.checked })}
                         className="rounded text-rose-600"
                       />
@@ -529,7 +529,7 @@ const BlogAdmin = () => {
                           className="inline-block px-4 py-2 bg-gray-100 hover:bg-gray-200 rounded-lg cursor-pointer"
                         >
                           {uploading ? 'Upload en cours...' : 'Ajouter des images'}
-                        </label>
+                  </label>
                       </div>
                     </div>
                   </div>
@@ -539,13 +539,13 @@ const BlogAdmin = () => {
                 <div className="space-y-4">
                   <div className="flex justify-between items-center">
                     <h3 className="font-semibold text-lg text-gray-900">Tags</h3>
-                    <button
+                  <button
                       type="button"
                       onClick={addTag}
                       className="btn-secondary text-sm"
-                    >
+                  >
                       + Ajouter un tag
-                    </button>
+                  </button>
                   </div>
                   {formData.tags.map((tag, index) => (
                     <div key={index} className="flex gap-2">
@@ -556,8 +556,8 @@ const BlogAdmin = () => {
                         onChange={(e) => updateTag(index, e.target.value)}
                         className="input-field flex-1"
                       />
-                      <button
-                        type="button"
+                  <button
+                    type="button"
                         onClick={() => removeTag(index)}
                         className="p-2 text-red-600 hover:bg-red-50 rounded"
                       >

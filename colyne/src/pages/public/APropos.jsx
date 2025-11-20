@@ -183,7 +183,7 @@ const APropos = () => {
               className="lg:col-span-2"
             >
               <h2 className="text-3xl md:text-4xl font-display font-bold text-brown-dark mb-6">
-                Mon parcours
+                Ma façon de travailler
               </h2>
               <div className="space-y-4 text-gray-700 leading-relaxed">
                 <p className="text-lg">
