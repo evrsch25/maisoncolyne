@@ -45,17 +45,17 @@ const Prestations = () => {
 
       {/* Header */}
       <section className="section-padding bg-white">
-        <div className="container-custom">
+        <div className="container-custom px-4 sm:px-6 lg:px-8">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
             className="max-w-3xl mx-auto text-center"
           >
-            <h1 className="text-4xl md:text-5xl font-display font-bold text-brown-dark mb-6">
+            <h1 className="text-3xl sm:text-4xl md:text-5xl font-display font-bold text-brown-dark mb-4 sm:mb-6">
               Mes Prestations
             </h1>
-            <p className="text-lg text-gray-700 leading-relaxed">
+            <p className="text-base sm:text-lg text-gray-700 leading-relaxed">
               {config.about.philosophy}
             </p>
           </motion.div>
@@ -64,23 +64,23 @@ const Prestations = () => {
 
       {/* Prestations en cartes */}
       <section id="prestations-list" className="section-padding bg-beige-light">
-        <div className="container-custom">
+        <div className="container-custom px-4 sm:px-6 lg:px-8">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
             viewport={{ once: true }}
-            className="text-center mb-12"
+            className="text-center mb-8 sm:mb-12"
           >
-            <h2 className="text-3xl md:text-4xl font-display font-bold text-brown-dark mb-4">
+            <h2 className="text-2xl sm:text-3xl md:text-4xl font-display font-bold text-brown-dark mb-3 sm:mb-4">
               Découvrez toutes mes offres
             </h2>
-            <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+            <p className="text-base sm:text-lg text-gray-600 max-w-2xl mx-auto">
               Chaque séance est unique et personnalisée selon vos besoins
             </p>
           </motion.div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
             {prestations.map((prestation) => (
               <ServiceCard key={prestation.id} prestation={prestation} />
             ))}
@@ -90,18 +90,18 @@ const Prestations = () => {
 
       {/* Ce qui est inclus */}
       <section className="section-padding bg-white">
-        <div className="container-custom">
+        <div className="container-custom px-4 sm:px-6 lg:px-8">
           <motion.h2
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
             viewport={{ once: true }}
-            className="text-3xl md:text-4xl font-display font-bold text-brown-dark mb-12 text-center"
+            className="text-2xl sm:text-3xl md:text-4xl font-display font-bold text-brown-dark mb-8 sm:mb-12 text-center"
           >
             Ce qui est inclus dans mes prestations
           </motion.h2>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 max-w-6xl mx-auto">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 max-w-6xl mx-auto">
             {[
               { icon: Camera, title: 'Séance personnalisée', desc: 'Ambiance et style adaptés à vos envies' },
               { icon: Check, title: 'Retouches professionnelles', desc: 'Chaque photo sublimée avec soin' },
@@ -114,13 +114,13 @@ const Prestations = () => {
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, delay: index * 0.1 }}
                 viewport={{ once: true }}
-                className="text-center p-6 bg-beige-light rounded-lg"
+                className="text-center p-4 sm:p-6 bg-beige-light rounded-lg"
               >
-                <item.icon size={40} className="mx-auto text-green mb-4" />
-                <h3 className="font-display font-semibold text-lg mb-2 text-brown-dark">
+                <item.icon size={32} className="mx-auto text-green mb-3 sm:mb-4 sm:w-10 sm:h-10" />
+                <h3 className="font-display font-semibold text-base sm:text-lg mb-1.5 sm:mb-2 text-brown-dark">
                   {item.title}
                 </h3>
-                <p className="text-gray-600 text-sm">{item.desc}</p>
+                <p className="text-gray-600 text-xs sm:text-sm">{item.desc}</p>
               </motion.div>
             ))}
           </div>
@@ -129,7 +129,7 @@ const Prestations = () => {
 
       {/* Formulaire de contact */}
       <section className="section-padding bg-beige-light">
-        <div className="container-custom">
+        <div className="container-custom px-4 sm:px-6 lg:px-8">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -137,16 +137,16 @@ const Prestations = () => {
             viewport={{ once: true }}
             className="max-w-3xl mx-auto"
           >
-            <div className="text-center mb-12">
-              <h2 className="text-3xl md:text-4xl font-display font-bold text-brown-dark mb-4">
+            <div className="text-center mb-8 sm:mb-12">
+              <h2 className="text-2xl sm:text-3xl md:text-4xl font-display font-bold text-brown-dark mb-3 sm:mb-4">
                 Réservez votre séance
               </h2>
-              <p className="text-lg text-gray-600">
+              <p className="text-base sm:text-lg text-gray-600">
                 Remplissez le formulaire ci-dessous et je vous répondrai rapidement
               </p>
             </div>
 
-            <div className="bg-white rounded-2xl shadow-xl p-8 md:p-12">
+            <div className="bg-white rounded-2xl shadow-xl p-6 sm:p-8 md:p-12">
               <ContactForm />
             </div>
           </motion.div>

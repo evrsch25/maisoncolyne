@@ -60,13 +60,13 @@ const ContactForm = () => {
       <motion.div
         initial={{ opacity: 0, scale: 0.9 }}
         animate={{ opacity: 1, scale: 1 }}
-        className="bg-green-50 border-2 border-green-500 rounded-lg p-8 text-center"
+        className="bg-green-50 border-2 border-green-500 rounded-lg p-6 sm:p-8 text-center"
       >
-        <CheckCircle size={64} className="mx-auto text-green-500 mb-4" />
-        <h3 className="text-2xl font-display font-semibold text-gray-900 mb-2">
+        <CheckCircle size={48} className="mx-auto text-green-500 mb-3 sm:mb-4 sm:w-16 sm:h-16" />
+        <h3 className="text-xl sm:text-2xl font-display font-semibold text-gray-900 mb-2">
           Message envoyé !
         </h3>
-        <p className="text-gray-600">
+        <p className="text-sm sm:text-base text-gray-600">
           Merci pour votre message. Je vous répondrai dans les plus brefs délais.
         </p>
       </motion.div>
@@ -196,8 +196,8 @@ const ContactForm = () => {
       </div>
 
       {error && (
-        <div className="bg-red-50 border border-red-200 text-red-700 px-4 py-3 rounded-lg flex items-center gap-2">
-          <AlertTriangle size={18} />
+        <div className="bg-red-50 border border-red-200 text-red-700 px-3 sm:px-4 py-2 sm:py-3 rounded-lg flex items-center gap-2 text-sm sm:text-base">
+          <AlertTriangle size={16} className="flex-shrink-0 sm:w-[18px] sm:h-[18px]" />
           <span>{error}</span>
         </div>
       )}
@@ -205,16 +205,16 @@ const ContactForm = () => {
       <button
         type="submit"
         disabled={isSubmitting}
-        className="btn-primary w-full md:w-auto flex items-center justify-center space-x-2 disabled:opacity-50 disabled:cursor-not-allowed"
+        className="btn-primary w-full sm:w-auto flex items-center justify-center space-x-2 disabled:opacity-50 disabled:cursor-not-allowed text-sm sm:text-base"
       >
         {isSubmitting ? (
           <>
-            <div className="animate-spin rounded-full h-5 w-5 border-b-2 border-white" />
+            <div className="animate-spin rounded-full h-4 w-4 sm:h-5 sm:w-5 border-b-2 border-white" />
             <span>Envoi en cours...</span>
           </>
         ) : (
           <>
-            <Send size={20} />
+            <Send size={18} className="sm:w-5 sm:h-5" />
             <span>Envoyer le message</span>
           </>
         )}

@@ -67,8 +67,8 @@ const Header = () => {
 
   return (
     <header className="fixed top-0 left-0 right-0 z-50" style={{ backgroundColor: '#FFFBF6' }}>
-      <div className="container-custom">
-        <div className="flex items-center justify-between h-36">
+      <div className="container-custom px-4 sm:px-6 lg:px-8">
+        <div className="flex items-center justify-between h-20 sm:h-28 lg:h-36">
           {/* Navigation Gauche Desktop */}
           <nav className="hidden lg:flex items-center space-x-6 flex-1 justify-end">
             {leftMenuItems.map((item) => (
@@ -115,15 +115,15 @@ const Header = () => {
           </nav>
 
           {/* Logo au centre */}
-          <Link to="/" className="flex items-center mx-8">
+          <Link to="/" className="flex items-center mx-4 lg:mx-8">
             {logo ? (
               <img 
                 src={getImageUrl(logo.image)} 
                 alt={logo.alt || "Colyne Photographe"} 
-                className="h-32 md:h-36 w-auto object-contain"
+                className="h-16 sm:h-24 lg:h-32 xl:h-36 w-auto object-contain"
               />
             ) : (
-              <h1 className="text-2xl md:text-3xl font-display font-bold text-brown-dark">
+              <h1 className="text-xl sm:text-2xl lg:text-3xl font-display font-bold text-brown-dark">
                 Colyne <span className="text-green">Photographe</span>
               </h1>
             )}
@@ -180,10 +180,10 @@ const Header = () => {
               <img 
                 src={getImageUrl(logo.image)} 
                 alt={logo.alt || "Colyne Photographe"} 
-                className="h-28 w-auto object-contain"
+                className="h-14 sm:h-20 w-auto object-contain"
               />
             ) : (
-              <h1 className="text-xl font-display font-bold text-brown-dark">
+              <h1 className="text-base sm:text-xl font-display font-bold text-brown-dark">
                 Colyne <span className="text-green">Photographe</span>
               </h1>
             )}
@@ -192,10 +192,10 @@ const Header = () => {
           {/* Bouton Menu Mobile (à droite) */}
           <button
             onClick={toggleMenu}
-            className="lg:hidden text-gray-700 hover:text-green transition-colors"
+            className="lg:hidden text-gray-700 hover:text-green transition-colors p-2"
             aria-label="Toggle menu"
           >
-            {isMenuOpen ? <X size={28} /> : <Menu size={28} />}
+            {isMenuOpen ? <X size={24} className="sm:w-7 sm:h-7" /> : <Menu size={24} className="sm:w-7 sm:h-7" />}
           </button>
         </div>
       </div>
@@ -207,9 +207,9 @@ const Header = () => {
             initial={{ opacity: 0, height: 0 }}
             animate={{ opacity: 1, height: 'auto' }}
             exit={{ opacity: 0, height: 0 }}
-            className="lg:hidden bg-white border-t border-gray-200"
+            className="lg:hidden bg-white border-t border-gray-200 max-h-[calc(100vh-5rem)] overflow-y-auto"
           >
-            <nav className="container-custom py-4 space-y-4">
+            <nav className="container-custom px-4 py-4 space-y-2">
               {menuItems.map((item) => (
                 <div key={item.path}>
                   <NavLink

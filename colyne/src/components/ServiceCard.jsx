@@ -13,7 +13,7 @@ const ServiceCard = ({ prestation }) => {
       className="card-service group"
     >
       {/* Image */}
-      <div className="relative h-64 md:h-80 overflow-hidden">
+      <div className="relative h-56 sm:h-64 md:h-80 overflow-hidden">
         <img
           src={getImageUrl(prestation.mainImage || prestation.image) || 'https://images.unsplash.com/photo-1519741497674-611481863552?w=600'}
           alt={prestation.title}
@@ -24,23 +24,23 @@ const ServiceCard = ({ prestation }) => {
       </div>
 
       {/* Content */}
-      <div className="p-6">
-        <h3 className="text-2xl font-display font-semibold text-brown-dark mb-3">
+      <div className="p-4 sm:p-6">
+        <h3 className="text-xl sm:text-2xl font-display font-semibold text-brown-dark mb-2 sm:mb-3">
           {prestation.title}
         </h3>
-        <p className="text-gray-600 mb-4 line-clamp-3">
+        <p className="text-sm sm:text-base text-gray-600 mb-3 sm:mb-4 line-clamp-3">
           {prestation.shortDescription}
         </p>
         <div className="flex items-center justify-between">
-          <p className="text-green font-semibold text-lg">
+          <p className="text-green font-semibold text-base sm:text-lg">
             {prestation.basePrice}
           </p>
           <Link
             to={`/prestation/${prestation.slug}`}
-            className="flex items-center space-x-2 text-green hover:text-green-dark transition-colors group"
+            className="flex items-center space-x-1 sm:space-x-2 text-green hover:text-green-dark transition-colors group"
           >
-            <span className="font-medium">Découvrir</span>
-            <ArrowRight size={18} className="transform group-hover:translate-x-1 transition-transform" />
+            <span className="font-medium text-sm sm:text-base">Découvrir</span>
+            <ArrowRight size={16} className="transform group-hover:translate-x-1 transition-transform sm:w-[18px] sm:h-[18px]" />
           </Link>
         </div>
       </div>

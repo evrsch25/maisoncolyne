@@ -29,7 +29,7 @@ const BlogCard = ({ post }) => {
     >
       {/* Image */}
       <Link to={`/blog/${post.slug}`} className="block">
-        <div className="relative h-56 overflow-hidden">
+        <div className="relative h-48 sm:h-56 overflow-hidden">
           <img
             src={imageUrl}
             alt={post.title}
@@ -37,7 +37,7 @@ const BlogCard = ({ post }) => {
             className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
           />
           {post.category && (
-            <span className="absolute top-4 left-4 px-3 py-1 bg-brown text-white text-xs font-medium rounded-full">
+            <span className="absolute top-3 left-3 sm:top-4 sm:left-4 px-2 py-0.5 sm:px-3 sm:py-1 bg-brown text-white text-xs font-medium rounded-full">
               {post.category}
             </span>
           )}
@@ -45,30 +45,30 @@ const BlogCard = ({ post }) => {
       </Link>
 
       {/* Content */}
-      <div className="p-6">
+      <div className="p-4 sm:p-6">
         {formattedDate && (
-          <div className="flex items-center text-sm text-gray-500 mb-3">
-            <Calendar size={16} className="mr-2" />
+          <div className="flex items-center text-xs sm:text-sm text-gray-500 mb-2 sm:mb-3">
+            <Calendar size={14} className="mr-1.5 sm:mr-2 sm:w-4 sm:h-4" />
             <time dateTime={publishedDate}>{formattedDate}</time>
           </div>
         )}
 
         <Link to={`/blog/${post.slug}`}>
-          <h3 className="text-xl font-display font-semibold text-gray-900 mb-3 hover:text-brown transition-colors line-clamp-2">
+          <h3 className="text-lg sm:text-xl font-display font-semibold text-gray-900 mb-2 sm:mb-3 hover:text-brown transition-colors line-clamp-2">
             {post.title}
           </h3>
         </Link>
 
-        <p className="text-gray-600 mb-4 line-clamp-3">
+        <p className="text-sm sm:text-base text-gray-600 mb-3 sm:mb-4 line-clamp-3">
           {post.excerpt}
         </p>
 
         <Link
           to={`/blog/${post.slug}`}
-          className="inline-flex items-center space-x-2 text-brown hover:text-brown-dark transition-colors group"
+          className="inline-flex items-center space-x-1 sm:space-x-2 text-brown hover:text-brown-dark transition-colors group"
         >
-          <span className="font-medium">Lire la suite</span>
-          <ArrowRight size={18} className="transform group-hover:translate-x-1 transition-transform" />
+          <span className="font-medium text-sm sm:text-base">Lire la suite</span>
+          <ArrowRight size={16} className="transform group-hover:translate-x-1 transition-transform sm:w-[18px] sm:h-[18px]" />
         </Link>
       </div>
     </motion.article>
