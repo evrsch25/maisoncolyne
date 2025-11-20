@@ -183,7 +183,7 @@ const APropos = () => {
               className="lg:col-span-2"
             >
               <h2 className="text-2xl sm:text-3xl md:text-4xl font-display font-bold text-brown-dark mb-4 sm:mb-6">
-                Mon parcours
+                Ma façon de travailler
               </h2>
               <div className="space-y-3 sm:space-y-4 text-gray-700 leading-relaxed">
                 <p className="text-base sm:text-lg">
@@ -213,6 +213,30 @@ const APropos = () => {
               />
             </motion.div>
           </div>
+        </div>
+      </section>
+
+      {/* CTA */}
+      <section className="section-padding bg-green text-white">
+        <div className="container-custom px-4 sm:px-6 lg:px-8">
+          <motion.div
+            initial={{ opacity: 0, scale: 0.95 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.6 }}
+            viewport={{ once: true }}
+            className="text-center max-w-3xl mx-auto"
+          >
+            <h2 className="text-2xl sm:text-3xl md:text-4xl font-display font-bold mb-4 sm:mb-6">
+              Envie de travailler ensemble ?
+            </h2>
+            <p className="text-base sm:text-lg md:text-xl text-beige-light mb-6 sm:mb-8">
+              Je serais ravie d'échanger avec vous sur votre projet et de créer ensemble 
+              des images qui vous ressemblent
+            </p>
+            <a href="/contact" className="btn-secondary text-sm sm:text-base">
+              Me contacter
+            </a>
+          </motion.div>
         </div>
       </section>
 
@@ -268,30 +292,6 @@ const APropos = () => {
               </motion.div>
             ))}
           </div>
-        </div>
-      </section>
-
-      {/* CTA */}
-      <section className="section-padding bg-green text-white">
-        <div className="container-custom px-4 sm:px-6 lg:px-8">
-          <motion.div
-            initial={{ opacity: 0, scale: 0.95 }}
-            whileInView={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.6 }}
-            viewport={{ once: true }}
-            className="text-center max-w-3xl mx-auto"
-          >
-            <h2 className="text-2xl sm:text-3xl md:text-4xl font-display font-bold mb-4 sm:mb-6">
-              Envie de travailler ensemble ?
-            </h2>
-            <p className="text-base sm:text-lg md:text-xl text-beige-light mb-6 sm:mb-8">
-              Je serais ravie d'échanger avec vous sur votre projet et de créer ensemble 
-              des images qui vous ressemblent
-            </p>
-            <a href="/contact" className="btn-secondary text-sm sm:text-base">
-              Me contacter
-            </a>
-          </motion.div>
         </div>
       </section>
     </div>
