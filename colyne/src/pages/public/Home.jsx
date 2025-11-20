@@ -18,21 +18,30 @@ const Home = () => {
 
   // Charger les médias statiques pour l'accueil
   useEffect(() => {
+    if (!config) return;
     const loadMedia = async () => {
       try {
         const response = await mediaStaticAPI.getAll({ page: 'accueil', active: true });
         if (response.success) {
           // Filtrer et formater les images du carousel
-          const carousel = response.data
+          const carouselMedia = response.data
             .filter(m => m.location === 'carousel')
-            .sort((a, b) => a.order - b.order)
-            .map((m, index) => ({
-              url: getImageUrl(m.image),
-              title: m.title || (index === 0 ? 'Capturer l\'essence de vos moments précieux' : 
-                                 index === 1 ? 'Des souvenirs qui traversent le temps' : 
-                                 'L\'art de sublimer vos émotions'),
-              subtitle: m.alt || 'Photographe professionnelle à Oye-plage'
-            }));
+            .sort((a, b) => a.order - b.order);
+          
+          // Utiliser les slides de la config si disponibles, sinon valeurs par défaut
+          const slides = config?.hero?.slides?.length > 0 
+            ? config.hero.slides.sort((a, b) => a.order - b.order)
+            : [
+                { title: 'Capturer l\'essence de vos moments précieux', subtitle: 'Photographe professionnelle à Oye-plage', order: 0 },
+                { title: 'Des souvenirs qui traversent le temps', subtitle: 'Maternité, famille, mariage', order: 1 },
+                { title: 'L\'art de sublimer vos émotions', subtitle: 'Avec sensibilité et authenticité', order: 2 }
+              ];
+
+          const carousel = carouselMedia.map((m, index) => ({
+            url: getImageUrl(m.image),
+            title: slides[index]?.title || slides[0]?.title || 'Capturer l\'essence de vos moments précieux',
+            subtitle: slides[index]?.subtitle || slides[0]?.subtitle || 'Photographe professionnelle à Oye-plage'
+          }));
           setCarouselImages(carousel);
 
           // Trouver l'image de bienvenue
@@ -54,7 +63,7 @@ const Home = () => {
       }
     };
     loadMedia();
-  }, []);
+  }, [config]);
 
   // Filtrer les prestations featured
   const featuredPrestations = prestations.filter(p => p.featured).slice(0, 3);

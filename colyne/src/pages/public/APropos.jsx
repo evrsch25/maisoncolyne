@@ -108,7 +108,7 @@ const APropos = () => {
                 Mon portrait
               </h2>
               <div className="space-y-4 text-gray-700 leading-relaxed">
-                <p className="text-lg">
+                <p className="text-lg whitespace-pre-line">
                   {config.about.fullDescription}
                 </p>
                 <p>

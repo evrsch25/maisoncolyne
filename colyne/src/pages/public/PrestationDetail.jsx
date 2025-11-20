@@ -90,7 +90,7 @@ const PrestationDetail = () => {
             <h2 className="text-3xl font-display font-bold text-brown-dark mb-6">
               La séance en détails
             </h2>
-            <p className="text-lg text-gray-700 leading-relaxed">
+            <p className="text-lg text-gray-700 leading-relaxed whitespace-pre-line">
               {prestation.description}
             </p>
           </motion.div>

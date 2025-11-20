@@ -81,10 +81,11 @@ const Header = () => {
                 <NavLink
                   to={item.path}
                   className={({ isActive }) =>
-                    `text-gray-700 hover:text-green transition-colors duration-300 font-medium ${
+                    `hover:text-green transition-colors duration-300 font-medium ${
                       isActive ? 'text-green border-b-2 border-green' : ''
                     }`
                   }
+                  style={{ color: '#3C1518' }}
                 >
                   {item.label}
                 </NavLink>
@@ -101,7 +102,8 @@ const Header = () => {
                       <Link
                         key={subItem.path}
                         to={subItem.path}
-                        className="block px-4 py-2 text-gray-700 hover:bg-beige-light hover:text-green transition-colors"
+                        className="block px-4 py-2 hover:bg-beige-light hover:text-green transition-colors"
+                        style={{ color: '#3C1518' }}
                       >
                         {subItem.label}
                       </Link>
@@ -139,10 +141,11 @@ const Header = () => {
                 <NavLink
                   to={item.path}
                   className={({ isActive }) =>
-                    `text-gray-700 hover:text-green transition-colors duration-300 font-medium ${
+                    `hover:text-green transition-colors duration-300 font-medium ${
                       isActive ? 'text-green border-b-2 border-green' : ''
                     }`
                   }
+                  style={{ color: '#3C1518' }}
                 >
                   {item.label}
                 </NavLink>
@@ -159,7 +162,8 @@ const Header = () => {
                       <Link
                         key={subItem.path}
                         to={subItem.path}
-                        className="block px-4 py-2 text-gray-700 hover:bg-beige-light hover:text-green transition-colors"
+                        className="block px-4 py-2 hover:bg-beige-light hover:text-green transition-colors"
+                        style={{ color: '#3C1518' }}
                       >
                         {subItem.label}
                       </Link>
@@ -212,10 +216,11 @@ const Header = () => {
                     to={item.path}
                     onClick={() => !item.submenu && toggleMenu()}
                     className={({ isActive }) =>
-                      `block py-2 text-gray-700 hover:text-green transition-colors font-medium ${
+                      `block py-2 hover:text-green transition-colors font-medium ${
                         isActive ? 'text-green font-semibold' : ''
                       }`
                     }
+                    style={{ color: '#3C1518' }}
                   >
                     {item.label}
                   </NavLink>
@@ -228,7 +233,8 @@ const Header = () => {
                           key={subItem.path}
                           to={subItem.path}
                           onClick={toggleMenu}
-                          className="block py-1 text-sm text-gray-600 hover:text-green transition-colors"
+                          className="block py-1 text-sm hover:text-green transition-colors"
+                          style={{ color: '#3C1518' }}
                         >
                           {subItem.label}
                         </Link>

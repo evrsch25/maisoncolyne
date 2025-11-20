@@ -30,10 +30,10 @@ const Footer = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 md:gap-12">
           {/* À propos */}
           <div>
-            <h3 className="text-xl font-display font-bold mb-4 text-beige-light">
+            <h3 className="text-xl font-display font-bold mb-4 text-white">
               Colyne Photographe
             </h3>
-            <p className="text-gray-300 mb-4 text-sm leading-relaxed">
+            <p className="text-white mb-4 text-sm leading-relaxed">
               Photographe professionnelle à Oye-plage, spécialisée dans la photographie de maternité, famille et de naissance.
             </p>
             <div className="flex space-x-4">
@@ -41,7 +41,7 @@ const Footer = () => {
                 href="https://www.instagram.com/maison_colyne"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-gray-300 hover:text-beige-light transition-colors"
+                className="text-white hover:text-beige-light transition-colors"
                 aria-label="Instagram"
               >
                 <Instagram size={24} />
@@ -50,7 +50,7 @@ const Footer = () => {
                 href="https://www.facebook.com/profile.php?id=100088668435009"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-gray-300 hover:text-beige-light transition-colors"
+                className="text-white hover:text-beige-light transition-colors"
                 aria-label="Facebook"
               >
                 <Facebook size={24} />
@@ -60,37 +60,37 @@ const Footer = () => {
 
           {/* Navigation */}
           <div>
-            <h3 className="text-lg font-display font-semibold mb-4 text-beige-light">
+            <h3 className="text-lg font-display font-semibold mb-4 text-white">
               Navigation
             </h3>
             <ul className="space-y-2 text-sm">
               <li>
-                <Link to="/" className="text-gray-300 hover:text-beige-light transition-colors">
+                <Link to="/" className="text-white hover:text-beige-light transition-colors">
                   Accueil
                 </Link>
               </li>
               <li>
-                <Link to="/prestations" className="text-gray-300 hover:text-beige-light transition-colors">
+                <Link to="/prestations" className="text-white hover:text-beige-light transition-colors">
                   Prestations
                 </Link>
               </li>
               <li>
-                <Link to="/portfolio" className="text-gray-300 hover:text-beige-light transition-colors">
+                <Link to="/portfolio" className="text-white hover:text-beige-light transition-colors">
                   Portfolio
                 </Link>
               </li>
               <li>
-                <Link to="/a-propos" className="text-gray-300 hover:text-beige-light transition-colors">
+                <Link to="/a-propos" className="text-white hover:text-beige-light transition-colors">
                   À propos
                 </Link>
               </li>
               <li>
-                <Link to="/blog" className="text-gray-300 hover:text-beige-light transition-colors">
+                <Link to="/blog" className="text-white hover:text-beige-light transition-colors">
                   Blog
                 </Link>
               </li>
               <li>
-                <Link to="/contact" className="text-gray-300 hover:text-beige-light transition-colors">
+                <Link to="/contact" className="text-white hover:text-beige-light transition-colors">
                   Contact
                 </Link>
               </li>
@@ -99,13 +99,13 @@ const Footer = () => {
 
           {/* Prestations */}
           <div>
-            <h3 className="text-lg font-display font-semibold mb-4 text-beige-light">
+            <h3 className="text-lg font-display font-semibold mb-4 text-white">
               Prestations
             </h3>
             <ul className="space-y-2 text-sm">
               {prestationsLinks.map(({ slug, title }) => (
                 <li key={slug}>
-                  <Link to={`/prestation/${slug}`} className="text-gray-300 hover:text-beige-light transition-colors">
+                  <Link to={`/prestation/${slug}`} className="text-white hover:text-beige-light transition-colors">
                     {title}
                   </Link>
                 </li>
@@ -115,23 +115,23 @@ const Footer = () => {
 
           {/* Contact */}
           <div>
-            <h3 className="text-lg font-display font-semibold mb-4 text-beige-light">
+            <h3 className="text-lg font-display font-semibold mb-4 text-white">
               Contact
             </h3>
             <ul className="space-y-3 text-sm">
               <li className="flex items-start space-x-2">
-                <MapPin size={18} className="text-beige-light mt-0.5 flex-shrink-0" />
-                <span className="text-gray-300">265 Rue des Petits Moulins, 62215 Oye-Plage</span>
+                <MapPin size={18} className="text-white mt-0.5 flex-shrink-0" />
+                <span className="text-white">265 Rue des Petits Moulins, 62215 Oye-Plage</span>
               </li>
               <li className="flex items-start space-x-2">
-                <Phone size={18} className="text-beige-light mt-0.5 flex-shrink-0" />
-                <a href="tel:+33667914707" className="text-gray-300 hover:text-beige-light transition-colors">
+                <Phone size={18} className="text-white mt-0.5 flex-shrink-0" />
+                <a href="tel:+33667914707" className="text-white hover:text-beige-light transition-colors">
                 +33 6 67 91 47 07
                 </a>
               </li>
               <li className="flex items-start space-x-2">
-                <Mail size={18} className="text-beige-light mt-0.5 flex-shrink-0" />
-                <a href="mailto:maisoncolyne@gmail.com" className="text-gray-300 hover:text-beige-light transition-colors">
+                <Mail size={18} className="text-white mt-0.5 flex-shrink-0" />
+                <a href="mailto:maisoncolyne@gmail.com" className="text-white hover:text-beige-light transition-colors">
                 maisoncolyne@gmail.com
                 </a>
               </li>
@@ -143,18 +143,18 @@ const Footer = () => {
       {/* Bottom Bar */}
       <div className="border-t border-primary-700">
         <div className="container-custom py-6">
-          <div className="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0 text-sm text-gray-400">
+          <div className="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0 text-sm text-white">
             <p className="flex items-center">
               © {currentYear} Colyne Photographe. Tous droits réservés.
             </p>
             <div className="flex space-x-6">
-              <Link to="/mentions-legales" className="hover:text-beige-light transition-colors">
+              <Link to="/mentions-legales" className="text-white hover:text-beige-light transition-colors">
                 Mentions légales
               </Link>
-              <Link to="/politique-confidentialite" className="hover:text-beige-light transition-colors">
+              <Link to="/politique-confidentialite" className="text-white hover:text-beige-light transition-colors">
                 Politique de confidentialité
               </Link>
-              <Link to="/cgv" className="hover:text-beige-light transition-colors">
+              <Link to="/cgv" className="text-white hover:text-beige-light transition-colors">
                 CGV
               </Link>
             </div>

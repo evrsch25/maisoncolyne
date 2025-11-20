@@ -12,6 +12,14 @@ const PagesAdmin = () => {
       messenger: '',
       ...config.contact,
     },
+    hero: {
+      slides: Array.isArray(config?.hero?.slides) ? config.hero.slides : [
+        { title: 'Capturer l\'essence de vos moments précieux', subtitle: 'Photographe professionnelle à Oye-plage', order: 0 },
+        { title: 'Des souvenirs qui traversent le temps', subtitle: 'Maternité, famille, mariage', order: 1 },
+        { title: 'L\'art de sublimer vos émotions', subtitle: 'Avec sensibilité et authenticité', order: 2 }
+      ],
+      ...config.hero,
+    },
     faq: Array.isArray(config.faq) ? config.faq : [],
   };
 
@@ -74,6 +82,43 @@ const PagesAdmin = () => {
     setFormData(prev => ({
       ...prev,
       faq: (prev.faq || []).filter((_, i) => i !== index),
+    }));
+  };
+
+  const handleSlideChange = (index, field, value) => {
+    setFormData(prev => {
+      const slides = [...(prev.hero?.slides || [])];
+      slides[index] = {
+        ...slides[index],
+        [field]: value,
+      };
+      return {
+        ...prev,
+        hero: {
+          ...prev.hero,
+          slides,
+        },
+      };
+    });
+  };
+
+  const addSlide = () => {
+    setFormData(prev => ({
+      ...prev,
+      hero: {
+        ...prev.hero,
+        slides: [...(prev.hero?.slides || []), { title: '', subtitle: '', order: (prev.hero?.slides?.length || 0) }],
+      },
+    }));
+  };
+
+  const removeSlide = (index) => {
+    setFormData(prev => ({
+      ...prev,
+      hero: {
+        ...prev.hero,
+        slides: (prev.hero?.slides || []).filter((_, i) => i !== index),
+      },
     }));
   };
 
@@ -169,6 +214,88 @@ const PagesAdmin = () => {
               />
             </div>
           </div>
+        </motion.div>
+
+        {/* Carousel Hero */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.05 }}
+          className="bg-white rounded-lg shadow-md p-6"
+        >
+          <div className="flex items-center justify-between mb-6">
+            <h2 className="text-xl font-display font-semibold text-gray-900">
+              Textes du Carousel (Page d'Accueil)
+            </h2>
+            <button
+              type="button"
+              onClick={addSlide}
+              className="btn-secondary flex items-center space-x-2"
+            >
+              <Plus size={20} />
+              <span>Ajouter un slide</span>
+            </button>
+          </div>
+
+          <div className="space-y-4">
+            {(formData.hero?.slides || []).map((slide, index) => (
+              <div key={index} className="border border-gray-200 rounded-lg p-4">
+                <div className="flex items-center justify-between mb-4">
+                  <h3 className="font-semibold text-gray-700">Slide {index + 1}</h3>
+                  {(formData.hero?.slides?.length || 0) > 1 && (
+                    <button
+                      type="button"
+                      onClick={() => removeSlide(index)}
+                      className="text-red-600 hover:text-red-800"
+                    >
+                      <Trash2 size={18} />
+                    </button>
+                  )}
+                </div>
+                <div className="space-y-3">
+                  <div>
+                    <label className="block text-sm font-medium text-gray-700 mb-2">
+                      Titre principal
+                    </label>
+                    <input
+                      type="text"
+                      value={slide.title || ''}
+                      onChange={(e) => handleSlideChange(index, 'title', e.target.value)}
+                      className="input-field"
+                      placeholder="Ex: Capturer l'essence de vos moments précieux"
+                    />
+                  </div>
+                  <div>
+                    <label className="block text-sm font-medium text-gray-700 mb-2">
+                      Sous-titre
+                    </label>
+                    <input
+                      type="text"
+                      value={slide.subtitle || ''}
+                      onChange={(e) => handleSlideChange(index, 'subtitle', e.target.value)}
+                      className="input-field"
+                      placeholder="Ex: Photographe professionnelle à Oye-plage"
+                    />
+                  </div>
+                  <div>
+                    <label className="block text-sm font-medium text-gray-700 mb-2">
+                      Ordre d'affichage
+                    </label>
+                    <input
+                      type="number"
+                      value={slide.order || 0}
+                      onChange={(e) => handleSlideChange(index, 'order', parseInt(e.target.value) || 0)}
+                      className="input-field w-24"
+                      min="0"
+                    />
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+          <p className="text-sm text-gray-500 mt-4">
+            Note : Les images du carousel se gèrent dans la section "Médias Statiques" avec la page "accueil" et la localisation "carousel".
+          </p>
         </motion.div>
 
         {/* Page À propos */}

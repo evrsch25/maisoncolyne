@@ -105,7 +105,7 @@ const Prestations = () => {
             {[
               { icon: Camera, title: 'Séance personnalisée', desc: 'Ambiance et style adaptés à vos envies' },
               { icon: Check, title: 'Retouches professionnelles', desc: 'Chaque photo sublimée avec soin' },
-              { icon: MapPin, title: 'Lieux flexibles', desc: 'À domicile, en studio ou en extérieur' },
+              { icon: MapPin, title: 'Lieux flexibles', desc: 'En studio ou en extérieur' },
               { icon: Clock, title: 'Galerie en ligne privée', desc: 'Accès illimité à vos photos' },
             ].map((item, index) => (
               <motion.div
