@@ -1,5 +1,6 @@
 const multer = require('multer');
 const path = require('path');
+const fs = require('fs');
 
 // Configuration du stockage
 const storage = multer.diskStorage({
@@ -7,9 +8,11 @@ const storage = multer.diskStorage({
     cb(null, 'uploads/');
   },
   filename: function (req, file, cb) {
-    // Générer un nom de fichier unique
-    const uniqueSuffix = Date.now() + '-' + Math.round(Math.random() * 1E9);
-    cb(null, file.fieldname + '-' + uniqueSuffix + path.extname(file.originalname));
+    // Conserver le nom de fichier original avec un timestamp pour éviter les doublons
+    const uniqueSuffix = Date.now();
+    const originalName = path.parse(file.originalname).name;
+    const ext = path.extname(file.originalname);
+    cb(null, `${originalName}-${uniqueSuffix}${ext}`);
   }
 });
 

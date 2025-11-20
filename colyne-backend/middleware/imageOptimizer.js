@@ -34,7 +34,7 @@ const optimizeImage = async (file) => {
         fit: 'inside', // Conserver le ratio
         withoutEnlargement: true // Ne pas agrandir les petites images
       })
-      .jpeg({ quality: 80, progressive: true })
+      .jpeg({ quality: 90, progressive: true }) // Qualité améliorée pour les miniatures aussi
       .toFile(thumbPath);
     
     const thumbStats = await fs.stat(thumbPath);
@@ -42,11 +42,11 @@ const optimizeImage = async (file) => {
     console.log(`   🔍 Miniature: ${thumbSize} KB (400px)`);
     
     // 2. Optimiser l'image originale (JPEG/PNG)
-    // Qualité 85 = excellent compromis (imperceptible + 40-60% de gain)
+    // Qualité 95 = qualité professionnelle (presque imperceptible, grain minimal)
     if (metadata.format === 'jpeg' || metadata.format === 'jpg') {
       await sharp(imageBuffer)
         .jpeg({ 
-          quality: 85,
+          quality: 95, // Qualité professionnelle (au lieu de 85)
           progressive: true, // Chargement progressif
           mozjpeg: true // Meilleure compression
         })
@@ -57,8 +57,8 @@ const optimizeImage = async (file) => {
     } else if (metadata.format === 'png') {
       await sharp(imageBuffer)
         .png({ 
-          quality: 85,
-          compressionLevel: 9,
+          quality: 95, // Qualité professionnelle
+          compressionLevel: 6, // Réduit de 9 à 6 pour moins de compression
           progressive: true
         })
         .toFile(originalPath + '.tmp');
@@ -69,7 +69,7 @@ const optimizeImage = async (file) => {
     // 3. Créer une version WebP (30% plus légère)
     await sharp(imageBuffer)
       .webp({ 
-        quality: 85,
+        quality: 95, // Qualité professionnelle (au lieu de 85)
         effort: 4 // Bon compromis vitesse/compression
       })
       .toFile(webpPath);

@@ -7,6 +7,13 @@ const configSchema = new mongoose.Schema({
     description: { type: String },
     location: { type: String, default: 'Oye-plage, France' }
   },
+  hero: {
+    slides: [{
+      title: { type: String },
+      subtitle: { type: String },
+      order: { type: Number, default: 0 }
+    }]
+  },
   contact: {
     email: { type: String, required: true },
     phone: { type: String, required: true },
