@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Plus, Pencil, Trash2, Upload, X, Save, Image as ImageIcon } from 'lucide-react';
-import { prestationsAPI, uploadAPI } from '../../utils/api';
+import { prestationsAPI, uploadAPI, getImageUrl } from '../../utils/api';
 import { useData } from '../../context/DataContext';
 
 const PrestationsAdmin = () => {
@@ -292,7 +292,7 @@ const PrestationsAdmin = () => {
             <div className="relative aspect-video">
               {prestation.mainImage ? (
                 <img
-                  src={`http://localhost:5000${prestation.mainImage}`}
+                  src={getImageUrl(prestation.mainImage)}
                   alt={prestation.title}
                   className="w-full h-full object-cover"
                 />
@@ -469,7 +469,7 @@ const PrestationsAdmin = () => {
                       {formData.mainImage ? (
                         <div className="relative">
                           <img
-                            src={`http://localhost:5000${formData.mainImage}`}
+                            src={getImageUrl(formData.mainImage)}
                             alt="Preview"
                             className="max-h-48 mx-auto rounded"
                           />
@@ -516,7 +516,7 @@ const PrestationsAdmin = () => {
                         {formData.inspirationGallery.map((img, index) => (
                           <div key={index} className="relative">
                             <img
-                              src={`http://localhost:5000${img}`}
+                              src={getImageUrl(img)}
                               alt={`Gallery ${index}`}
                               className="w-full h-24 object-cover rounded"
                             />

@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Plus, Pencil, Trash2, Upload, X, Save, Image as ImageIcon } from 'lucide-react';
-import { blogAPI, uploadAPI } from '../../utils/api';
+import { blogAPI, uploadAPI, getImageUrl } from '../../utils/api';
 
 const getTodayISO = () => new Date().toISOString().split('T')[0];
 const formatDateForInput = (value) => {
@@ -249,7 +249,7 @@ const BlogAdmin = () => {
             <div className="relative aspect-video">
               {article.mainImage ? (
                 <img
-                  src={`http://localhost:5000${article.mainImage}`}
+                  src={getImageUrl(article.mainImage)}
                   alt={article.title}
                   className="w-full h-full object-cover"
                 />
@@ -453,7 +453,7 @@ const BlogAdmin = () => {
                       {formData.mainImage ? (
                         <div className="relative">
                           <img
-                            src={`http://localhost:5000${formData.mainImage}`}
+                            src={getImageUrl(formData.mainImage)}
                             alt="Preview"
                             className="max-h-48 mx-auto rounded"
                           />
@@ -500,7 +500,7 @@ const BlogAdmin = () => {
                         {formData.additionalImages.map((img, index) => (
                           <div key={index} className="relative">
                             <img
-                              src={`http://localhost:5000${img}`}
+                              src={getImageUrl(img)}
                               alt={`Additional ${index}`}
                               className="w-full h-24 object-cover rounded"
                             />
