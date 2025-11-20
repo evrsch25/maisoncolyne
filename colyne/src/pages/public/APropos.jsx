@@ -216,6 +216,30 @@ const APropos = () => {
         </div>
       </section>
 
+      {/* CTA */}
+      <section className="section-padding bg-green text-white">
+        <div className="container-custom">
+          <motion.div
+            initial={{ opacity: 0, scale: 0.95 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.6 }}
+            viewport={{ once: true }}
+            className="text-center max-w-3xl mx-auto"
+          >
+            <h2 className="text-3xl md:text-4xl font-display font-bold mb-6">
+              Envie de travailler ensemble ?
+            </h2>
+            <p className="text-xl text-beige-light mb-8">
+              Je serais ravie d'échanger avec vous sur votre projet et de créer ensemble 
+              des images qui vous ressemblent
+            </p>
+            <a href="/contact" className="btn-secondary">
+              Me contacter
+            </a>
+          </motion.div>
+        </div>
+      </section>
+
       {/* Valeurs */}
       <section className="section-padding bg-beige-light">
         <div className="container-custom">
@@ -268,30 +292,6 @@ const APropos = () => {
               </motion.div>
             ))}
           </div>
-        </div>
-      </section>
-
-      {/* CTA */}
-      <section className="section-padding bg-green text-white">
-        <div className="container-custom">
-          <motion.div
-            initial={{ opacity: 0, scale: 0.95 }}
-            whileInView={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.6 }}
-            viewport={{ once: true }}
-            className="text-center max-w-3xl mx-auto"
-          >
-            <h2 className="text-3xl md:text-4xl font-display font-bold mb-6">
-              Envie de travailler ensemble ?
-            </h2>
-            <p className="text-xl text-beige-light mb-8">
-              Je serais ravie d'échanger avec vous sur votre projet et de créer ensemble 
-              des images qui vous ressemblent
-            </p>
-            <a href="/contact" className="btn-secondary">
-              Me contacter
-            </a>
-          </motion.div>
         </div>
       </section>
     </div>
