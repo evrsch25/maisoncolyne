@@ -130,6 +130,15 @@ export const getImageUrl = (imagePath) => {
     return imagePath;
   }
   const normalized = imagePath.startsWith('/') ? imagePath : `/${imagePath}`;
+  
+  // En production, utiliser le domaine actuel si API_BASE_URL pointe vers localhost
+  // Cela permet de servir les images via Nginx (qui proxy vers le backend)
+  if (typeof window !== 'undefined' && window.location.protocol === 'https:') {
+    if (API_BASE_URL.includes('localhost') || API_BASE_URL.includes('127.0.0.1')) {
+      return `${window.location.origin}${normalized}`;
+    }
+  }
+  
   return `${API_BASE_URL}${normalized}`;
 };
 
@@ -149,8 +158,16 @@ export const getThumbnailUrl = (imagePath) => {
   if (parts.length > 1) {
     const ext = parts.pop();
     const base = parts.join('.');
-    const normalizedBase = base.startsWith('/') ? base.slice(1) : base;
-    return `${API_BASE_URL}/${normalizedBase}_thumb.${ext}`;
+    const normalizedBase = base.startsWith('/') ? base : `/${base}`;
+    
+    // En production, utiliser le domaine actuel si API_BASE_URL pointe vers localhost
+    if (typeof window !== 'undefined' && window.location.protocol === 'https:') {
+      if (API_BASE_URL.includes('localhost') || API_BASE_URL.includes('127.0.0.1')) {
+        return `${window.location.origin}${normalizedBase}_thumb.${ext}`;
+      }
+    }
+    
+    return `${API_BASE_URL}${normalizedBase}_thumb.${ext}`;
   }
   return getImageUrl(imagePath);
 };
