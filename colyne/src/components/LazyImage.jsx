@@ -29,7 +29,7 @@ const LazyImage = ({ src, alt, className = '', style, onLoad, onError, ...props 
         alt={alt}
         loading="lazy"
         decoding="async"
-        className={`transition-opacity duration-700 ${loaded ? 'opacity-100' : 'opacity-0'} ${className}`}
+            className={`transition-opacity duration-300 ${loaded ? 'opacity-100' : 'opacity-0'} ${className}`}
         style={style}
         onLoad={handleLoad}
         onError={handleError}

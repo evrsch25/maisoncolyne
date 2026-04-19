@@ -50,14 +50,14 @@ const HeroCarousel = ({ images, autoplay = true, interval = 5000 }) => {
   }
 
   return (
-    <div className="relative w-full aspect-video overflow-hidden bg-gray-900">
-      <AnimatePresence mode="wait">
+    <div className="relative w-full aspect-video overflow-hidden" style={{ backgroundColor: '#F5EFE6' }}>
+      <AnimatePresence mode="sync">
         <motion.div
           key={currentIndex}
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
-          transition={{ duration: 0.7 }}
+          transition={{ duration: 0.25 }}
           className="absolute inset-0"
         >
           <LazyImage
@@ -73,25 +73,25 @@ const HeroCarousel = ({ images, autoplay = true, interval = 5000 }) => {
           <div className="absolute inset-0 flex items-center justify-center">
             <div className="text-center text-white px-4 sm:px-6 max-w-4xl">
               <motion.h1
-                initial={{ y: 20, opacity: 0 }}
+                initial={{ y: 10, opacity: 0 }}
                 animate={{ y: 0, opacity: 1 }}
-                transition={{ delay: 0.3, duration: 0.8 }}
+                transition={{ delay: 0.1, duration: 0.35 }}
                 className="text-2xl sm:text-3xl md:text-5xl lg:text-6xl font-display font-bold mb-3 sm:mb-4 leading-tight"
               >
                 {slides[currentIndex].title}
               </motion.h1>
               <motion.p
-                initial={{ y: 20, opacity: 0 }}
+                initial={{ y: 10, opacity: 0 }}
                 animate={{ y: 0, opacity: 1 }}
-                transition={{ delay: 0.5, duration: 0.8 }}
+                transition={{ delay: 0.2, duration: 0.35 }}
                 className="text-base sm:text-lg md:text-xl lg:text-2xl mb-6 sm:mb-8 text-gray-200"
               >
                 {slides[currentIndex].subtitle}
               </motion.p>
               <motion.div
-                initial={{ y: 20, opacity: 0 }}
+                initial={{ y: 10, opacity: 0 }}
                 animate={{ y: 0, opacity: 1 }}
-                transition={{ delay: 0.7, duration: 0.8 }}
+                transition={{ delay: 0.3, duration: 0.35 }}
               >
                 <a href="#services" className="btn-primary inline-block text-sm sm:text-base">
                   Découvrir mes services
