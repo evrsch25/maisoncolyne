@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
-import { pagesLegalesAPI } from '../../utils/api';
+import { pagesLegalesAPI } from '../utils/api';
 
 const PageLegaleDynamique = ({ slug, pageTitle }) => {
   const [page, setPage] = useState(null);
