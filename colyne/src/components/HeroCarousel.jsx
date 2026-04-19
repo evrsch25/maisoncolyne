@@ -50,7 +50,7 @@ const HeroCarousel = ({ images, autoplay = true, interval = 5000 }) => {
   }
 
   return (
-    <div className="relative w-full aspect-video overflow-hidden" style={{ backgroundColor: '#F5EFE6' }}>
+    <div className="relative w-full aspect-video overflow-hidden" style={{ backgroundColor: '#111' }}>
 
       {/* Couche images — toutes rendues, crossfade CSS pur, sans superposition de texte */}
       {slides.map((slide, index) => (
@@ -62,7 +62,7 @@ const HeroCarousel = ({ images, autoplay = true, interval = 5000 }) => {
           <img
             src={slide.url}
             alt={slide.title || ''}
-            loading={index === 0 ? 'eager' : 'lazy'}
+            loading="eager"
             decoding="async"
             className="w-full h-full object-cover"
           />
