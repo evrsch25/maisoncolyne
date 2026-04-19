@@ -19,7 +19,17 @@ const Header = () => {
     try {
       const response = await mediaStaticAPI.getByPageLocation('accueil', 'logo');
       if (response.success && response.data.length > 0) {
-        setLogo(response.data[0]);
+        const logoData = response.data[0];
+        setLogo(logoData);
+
+        const faviconUrl = getImageUrl(logoData.image);
+        let link = document.querySelector("link[rel~='icon']");
+        if (!link) {
+          link = document.createElement('link');
+          link.rel = 'icon';
+          document.head.appendChild(link);
+        }
+        link.href = faviconUrl;
       }
     } catch (error) {
       console.error('Erreur lors du chargement du logo:', error);

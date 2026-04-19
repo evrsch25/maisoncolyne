@@ -8,16 +8,13 @@ exports.uploadSingle = async (req, res, next) => {
       });
     }
 
-    // Retourner l'URL relative du fichier uploadé
     const fileUrl = `/uploads/${req.file.filename}`;
-    const thumbnailUrl = req.file.thumbnail ? `/uploads/${req.file.thumbnail}` : null;
 
     res.status(200).json({
       success: true,
       data: {
         filename: req.file.filename,
         url: fileUrl,
-        thumbnail: thumbnailUrl,
         size: req.file.size,
         mimetype: req.file.mimetype
       },
@@ -38,11 +35,9 @@ exports.uploadMultiple = async (req, res, next) => {
       });
     }
 
-    // Retourner les URLs relatives des fichiers uploadés
     const files = req.files.map(file => ({
       filename: file.filename,
       url: `/uploads/${file.filename}`,
-      thumbnail: file.thumbnail ? `/uploads/${file.thumbnail}` : null,
       size: file.size,
       mimetype: file.mimetype
     }));

@@ -1,6 +1,7 @@
 import { Outlet } from 'react-router-dom';
 import Header from './Header';
 import Footer from './Footer';
+import NewsPopup from '../components/NewsPopup';
 
 const LayoutPublic = () => {
   return (
@@ -10,6 +11,7 @@ const LayoutPublic = () => {
         <Outlet />
       </main>
       <Footer />
+      <NewsPopup />
     </div>
   );
 };

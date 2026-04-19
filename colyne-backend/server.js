@@ -82,6 +82,8 @@ app.use('/api/upload', require('./routes/upload'));
 app.use('/api/portfolio', require('./routes/portfolio'));
 app.use('/api/media-static', require('./routes/mediaStatic'));
 app.use('/api/testimonials', require('./routes/testimonials'));
+app.use('/api/actualites', require('./routes/actualites'));
+app.use('/api/pages-legales', require('./routes/pagesLegales'));
 
 // Route de test
 app.get('/', (req, res) => {

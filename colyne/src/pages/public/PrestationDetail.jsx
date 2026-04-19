@@ -4,12 +4,16 @@ import { motion } from 'framer-motion';
 import { MapPin, Check, ArrowLeft } from 'lucide-react';
 import ContactForm from '../../components/ContactForm';
 import { getImageUrl } from '../../utils/api';
+import usePageTitle from '../../hooks/usePageTitle';
+import LazyImage from '../../components/LazyImage';
 
 const PrestationDetail = () => {
   const { slug } = useParams();
   const { prestations } = useData();
 
   const prestation = prestations.find((p) => p.slug === slug);
+
+  usePageTitle(prestation ? (prestation.title || prestation.name) : null);
 
   if (!prestation) {
     return <Navigate to="/prestations" replace />;
@@ -31,13 +35,16 @@ const PrestationDetail = () => {
       </div>
 
       {/* Hero Image */}
-      <section className="relative h-[300px] sm:h-[400px] md:h-[500px]">
-        <img
-          src={getImageUrl(prestation.mainImage || prestation.image) || 'https://images.unsplash.com/photo-1519741497674-611481863552?w=1920'}
-          alt={prestation.title}
-          loading="lazy"
-          className="w-full h-full object-cover"
-        />
+      <section className="relative w-full aspect-video"
+        style={!getImageUrl(prestation.mainImage || prestation.image) ? { background: 'linear-gradient(135deg, #3C1518 0%, #6B3A2A 50%, #A67C5B 100%)' } : undefined}
+      >
+        {getImageUrl(prestation.mainImage || prestation.image) && (
+          <LazyImage
+            src={getImageUrl(prestation.mainImage || prestation.image)}
+            alt={prestation.title}
+            className="w-full h-full object-cover"
+          />
+        )}
         <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/30 to-transparent" />
         <div className="absolute inset-0 flex items-center justify-center">
           <motion.div
@@ -49,7 +56,7 @@ const PrestationDetail = () => {
             <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-display font-bold mb-3 sm:mb-4">
               {prestation.title}
             </h1>
-            <p className="text-lg sm:text-xl md:text-2xl text-gray-200">
+            <p className="text-lg sm:text-xl md:text-2xl text-gray-200 whitespace-pre-line">
               {prestation.shortDescription}
             </p>
           </motion.div>
@@ -156,13 +163,13 @@ const PrestationDetail = () => {
                     </h3>
                     <p className="text-2xl sm:text-3xl font-bold text-brown text-center mb-2 sm:mb-3">{detail.price}€</p>
                     {detail.deliverables && (
-                      <p className="text-xs sm:text-sm text-gray-600 mb-1.5 sm:mb-2">
+                      <p className="text-xs sm:text-sm text-gray-600 mb-1.5 sm:mb-2 whitespace-pre-line">
                         <span className="font-semibold">Livrables : </span>
                         {detail.deliverables}
                       </p>
                     )}
                     {detail.description && (
-                      <p className="text-xs sm:text-sm text-gray-600">
+                      <p className="text-xs sm:text-sm text-gray-600 whitespace-pre-line">
                         {detail.description}
                       </p>
                     )}
@@ -194,23 +201,26 @@ const PrestationDetail = () => {
             </motion.div>
 
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
-              {(prestation.inspirationGallery || prestation.gallery || []).map((image, index) => (
-                <motion.div
-                  key={index}
-                  initial={{ opacity: 0, scale: 0.9 }}
-                  whileInView={{ opacity: 1, scale: 1 }}
-                  transition={{ duration: 0.5, delay: index * 0.1 }}
-                  viewport={{ once: true }}
-                  className="aspect-square overflow-hidden rounded-lg shadow-lg"
-                >
-                  <img
-                    src={getImageUrl(image) || 'https://images.unsplash.com/photo-1519741497674-611481863552?w=600'}
-                    alt={`Galerie ${index + 1}`}
-                    loading="lazy"
-                    className="w-full h-full object-cover hover:scale-110 transition-transform duration-500"
-                  />
-                </motion.div>
-              ))}
+              {(prestation.inspirationGallery || prestation.gallery || []).map((image, index) => {
+                const imgUrl = getImageUrl(image);
+                if (!imgUrl) return null;
+                return (
+                  <motion.div
+                    key={index}
+                    initial={{ opacity: 0, scale: 0.9 }}
+                    whileInView={{ opacity: 1, scale: 1 }}
+                    transition={{ duration: 0.5, delay: index * 0.1 }}
+                    viewport={{ once: true }}
+                    className="aspect-square overflow-hidden rounded-lg shadow-lg"
+                  >
+                    <LazyImage
+                      src={imgUrl}
+                      alt={`Galerie ${index + 1}`}
+                      className="w-full h-full object-cover hover:scale-110 transition-transform duration-500"
+                    />
+                  </motion.div>
+                );
+              })}
             </div>
           </div>
         </section>

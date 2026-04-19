@@ -30,6 +30,8 @@ import PortfolioAdmin from './pages/admin/PortfolioAdmin';
 import MediaStaticAdmin from './pages/admin/MediaStaticAdmin';
 import TestimonialsAdmin from './pages/admin/TestimonialsAdmin';
 import ContactMessagesAdmin from './pages/admin/ContactMessagesAdmin';
+import PagesLegalesAdmin from './pages/admin/PagesLegalesAdmin';
+import ActualitesAdmin from './pages/admin/ActualitesAdmin';
 
 const ScrollToTop = () => {
   const { pathname } = useLocation();
@@ -76,6 +78,8 @@ function App() {
               <Route path="testimonials" element={<TestimonialsAdmin />} />
               <Route path="messages" element={<ContactMessagesAdmin />} />
               <Route path="pages" element={<PagesAdmin />} />
+              <Route path="actualites" element={<ActualitesAdmin />} />
+              <Route path="pages-legales" element={<PagesLegalesAdmin />} />
             </Route>
           </Routes>
         </Router>

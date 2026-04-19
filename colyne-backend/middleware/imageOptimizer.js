@@ -86,8 +86,9 @@ const optimizeImage = async (file) => {
     console.log(`   ✅ Optimisé: ${optimizedSize} MB (-${savings}%)`);
     console.log(`   ✅ WebP: ${webpSize} MB (-${webpSavings}%)`);
     
-    // Mettre à jour le fichier pour inclure le chemin de la miniature
+    // Mettre à jour le fichier pour inclure le chemin de la miniature et du WebP
     file.thumbnail = path.basename(thumbPath);
+    file.webpFilename = path.basename(webpPath);
     
     return {
       original: file.filename,

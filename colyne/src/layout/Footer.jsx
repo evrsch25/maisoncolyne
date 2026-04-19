@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import { Instagram, Facebook, Mail, Phone, MapPin, Heart } from 'lucide-react';
+import { Instagram, Facebook, Mail, Phone, MapPin, ChevronUp } from 'lucide-react';
 import { useMemo } from 'react';
 import { useData } from '../context/DataContext';
 
@@ -158,6 +158,14 @@ const Footer = () => {
                 CGV
               </Link>
             </div>
+            <button
+              onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+              className="flex items-center gap-2 text-white hover:text-beige-light transition-colors group"
+              aria-label="Retour en haut"
+            >
+              <span className="text-xs">Haut de page</span>
+              <ChevronUp size={18} className="group-hover:-translate-y-0.5 transition-transform duration-200" />
+            </button>
           </div>
         </div>
       </div>

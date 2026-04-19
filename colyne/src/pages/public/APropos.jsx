@@ -3,8 +3,11 @@ import { useData } from '../../context/DataContext';
 import { motion } from 'framer-motion';
 import { Camera, Heart, Clock, Sparkles } from 'lucide-react';
 import { mediaStaticAPI, getImageUrl } from '../../utils/api';
+import usePageTitle from '../../hooks/usePageTitle';
+import LazyImage from '../../components/LazyImage';
 
 const APropos = () => {
+  usePageTitle('À propos');
   const { config } = useData();
   const [media, setMedia] = useState({
     hero: null,
@@ -38,28 +41,31 @@ const APropos = () => {
     loadMedia();
   }, []);
 
-  const heroImageUrl = media.hero ? getImageUrl(media.hero.image) : 'https://images.unsplash.com/photo-1554048612-b6a482bc67e5?w=1920&q=80';
+  const heroImageUrl = media.hero ? getImageUrl(media.hero.image) : null;
   const heroImageAlt = media.hero?.alt || 'Colyne Photographe';
 
-  const portraitImageUrl = media.portrait ? getImageUrl(media.portrait.image) : 'https://images.unsplash.com/photo-1524504388940-b1c1722653e1?w=800&q=80';
+  const portraitImageUrl = media.portrait ? getImageUrl(media.portrait.image) : null;
   const portraitImageAlt = media.portrait?.alt || 'Colyne avec son appareil photo';
 
-  const pourquoiImageUrl = media.pourquoi ? getImageUrl(media.pourquoi.image) : 'https://images.unsplash.com/photo-1452587925148-ce544e77e70d?w=800&q=80';
+  const pourquoiImageUrl = media.pourquoi ? getImageUrl(media.pourquoi.image) : null;
   const pourquoiImageAlt = media.pourquoi?.alt || 'Passion pour la photographie';
 
-  const parcoursImageUrl = media.parcours ? getImageUrl(media.parcours.image) : 'https://images.unsplash.com/photo-1554048612-b6a482bc67e5?w=600&q=80';
+  const parcoursImageUrl = media.parcours ? getImageUrl(media.parcours.image) : null;
   const parcoursImageAlt = media.parcours?.alt || 'Mon parcours';
 
   return (
     <div className="animate-fade-in">
       {/* Hero Section */}
-      <section className="relative h-[300px] sm:h-[400px] md:h-[500px]">
-        <img
-          src={heroImageUrl}
-          alt={heroImageAlt}
-          loading="lazy"
-          className="w-full h-full object-cover"
-        />
+      <section className="relative w-full aspect-video"
+        style={!heroImageUrl ? { background: 'linear-gradient(135deg, #3C1518 0%, #6B3A2A 50%, #A67C5B 100%)' } : undefined}
+      >
+        {heroImageUrl && (
+          <LazyImage
+            src={heroImageUrl}
+            alt={heroImageAlt}
+            className="w-full h-full object-cover"
+          />
+        )}
         <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/30 to-transparent" />
         <div className="absolute inset-0 flex items-center justify-center">
           <motion.div
@@ -89,12 +95,13 @@ const APropos = () => {
               viewport={{ once: true }}
               className="lg:col-span-1"
             >
-              <img
-                src={portraitImageUrl}
-                alt={portraitImageAlt}
-                loading="lazy"
-                className="rounded-2xl shadow-2xl w-full h-full object-cover"
-              />
+              {portraitImageUrl && (
+                <LazyImage
+                  src={portraitImageUrl}
+                  alt={portraitImageAlt}
+                  className="rounded-2xl shadow-2xl w-full h-full object-cover"
+                />
+              )}
             </motion.div>
 
             <motion.div
@@ -160,12 +167,13 @@ const APropos = () => {
         viewport={{ once: true }}
         className="order-1 lg:order-2"
       >
-        <img
-          src={pourquoiImageUrl}
-          alt={pourquoiImageAlt}
-          loading="lazy"
-          className="rounded-2xl shadow-2xl w-full h-full object-cover"
-        />
+        {pourquoiImageUrl && (
+          <LazyImage
+            src={pourquoiImageUrl}
+            alt={pourquoiImageAlt}
+            className="rounded-2xl shadow-2xl w-full h-full object-cover"
+          />
+        )}
       </motion.div>
     </div>
   </div>
@@ -205,12 +213,13 @@ const APropos = () => {
               viewport={{ once: true }}
               className="lg:col-span-1"
             >
-              <img
-                src={parcoursImageUrl}
-                alt={parcoursImageAlt}
-                loading="lazy"
-                className="rounded-2xl shadow-2xl w-full h-full object-cover"
-              />
+              {parcoursImageUrl && (
+                <LazyImage
+                  src={parcoursImageUrl}
+                  alt={parcoursImageAlt}
+                  className="rounded-2xl shadow-2xl w-full h-full object-cover"
+                />
+              )}
             </motion.div>
           </div>
         </div>

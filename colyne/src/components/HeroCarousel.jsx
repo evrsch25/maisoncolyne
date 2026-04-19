@@ -1,29 +1,12 @@
 import { useState, useEffect } from 'react';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
+import LazyImage from './LazyImage';
 
 const HeroCarousel = ({ images, autoplay = true, interval = 5000 }) => {
   const [currentIndex, setCurrentIndex] = useState(0);
 
-  const defaultImages = [
-    {
-      url: 'https://images.unsplash.com/photo-1519052537078-e6302a4968d4?w=1920&q=80',
-      title: 'Capturer l\'essence de vos moments précieux',
-      subtitle: 'Photographe professionnelle à Oye-plage',
-    },
-    {
-      url: 'https://images.unsplash.com/photo-1519741497674-611481863552?w=1920&q=80',
-      title: 'Des souvenirs qui traversent le temps',
-      subtitle: 'Maternité, famille, mariage',
-    },
-    {
-      url: 'https://images.unsplash.com/photo-1511285560929-80b456fea0bc?w=1920&q=80',
-      title: 'L\'art de sublimer vos émotions',
-      subtitle: 'Avec sensibilité et authenticité',
-    },
-  ];
-
-  const slides = (images && images.length > 0) ? images : defaultImages;
+  const slides = images && images.length > 0 ? images : [];
 
   const goToPrevious = () => {
     setCurrentIndex((prevIndex) => (prevIndex === 0 ? slides.length - 1 : prevIndex - 1));
@@ -38,14 +21,36 @@ const HeroCarousel = ({ images, autoplay = true, interval = 5000 }) => {
   };
 
   useEffect(() => {
-    if (!autoplay) return;
+    if (!autoplay || slides.length === 0) return;
 
     const timer = setInterval(goToNext, interval);
     return () => clearInterval(timer);
-  }, [currentIndex, autoplay, interval]);
+  }, [currentIndex, autoplay, interval, slides.length]);
+
+  if (slides.length === 0) {
+    return (
+      <div className="relative w-full aspect-video overflow-hidden"
+        style={{ background: 'linear-gradient(135deg, #3C1518 0%, #6B3A2A 50%, #A67C5B 100%)' }}
+      >
+        <div className="absolute inset-0 flex items-center justify-center">
+          <div className="text-center text-white px-4 sm:px-6 max-w-4xl">
+            <h1 className="text-2xl sm:text-3xl md:text-5xl lg:text-6xl font-display font-bold mb-3 sm:mb-4 leading-tight">
+              Capturer l&apos;essence de vos moments précieux
+            </h1>
+            <p className="text-base sm:text-lg md:text-xl lg:text-2xl mb-6 sm:mb-8 text-gray-200">
+              Photographe professionnelle à Oye-plage
+            </p>
+            <a href="#services" className="btn-primary inline-block text-sm sm:text-base">
+              Découvrir mes services
+            </a>
+          </div>
+        </div>
+      </div>
+    );
+  }
 
   return (
-    <div className="relative w-full h-[400px] sm:h-[500px] md:h-[600px] lg:h-[700px] overflow-hidden bg-gray-900">
+    <div className="relative w-full aspect-video overflow-hidden bg-gray-900">
       <AnimatePresence mode="wait">
         <motion.div
           key={currentIndex}
@@ -55,10 +60,9 @@ const HeroCarousel = ({ images, autoplay = true, interval = 5000 }) => {
           transition={{ duration: 0.7 }}
           className="absolute inset-0"
         >
-          <img
+          <LazyImage
             src={slides[currentIndex].url}
             alt={slides[currentIndex].title}
-            loading="lazy"
             className="w-full h-full object-cover"
           />
           

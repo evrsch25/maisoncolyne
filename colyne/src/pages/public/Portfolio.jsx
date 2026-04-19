@@ -1,6 +1,9 @@
 import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
+import { Award } from 'lucide-react';
 import { portfolioAPI, getImageUrl } from '../../utils/api';
+import usePageTitle from '../../hooks/usePageTitle';
+import LazyImage from '../../components/LazyImage';
 
 const sortImagesByDate = (images) => {
   return [...images].sort((a, b) => {
@@ -11,6 +14,7 @@ const sortImagesByDate = (images) => {
 };
 
 const Portfolio = () => {
+  usePageTitle('Portfolio');
   const [galleryImages, setGalleryImages] = useState([]);
   const [loading, setLoading] = useState(true);
   const [activeFilter, setActiveFilter] = useState('all');
@@ -35,16 +39,19 @@ const Portfolio = () => {
 
   const filters = [
     { value: 'all', label: 'Tous' },
+    { value: 'titrees', label: 'Titrées', icon: true },
     { value: 'nouveau-ne', label: 'Nouveau-né' },
     { value: 'bebe', label: 'Bébé' },
     { value: 'grossesse', label: 'Grossesse' },
     { value: 'famille', label: 'Famille' },
-    { value: 'iris', label: 'Iris' },
+    { value: 'portrait-feminin', label: 'Portrait féminin' },
   ];
 
   const filteredImages = activeFilter === 'all'
     ? galleryImages
-    : galleryImages.filter(img => img.category === activeFilter);
+    : activeFilter === 'titrees'
+      ? galleryImages.filter(img => img.titree === true)
+      : galleryImages.filter(img => img.category === activeFilter);
 
   return (
     <div className="animate-fade-in">
@@ -76,12 +83,17 @@ const Portfolio = () => {
               <button
                 key={filter.value}
                 onClick={() => setActiveFilter(filter.value)}
-                className={`px-6 py-2 rounded-full font-medium transition-all duration-300 ${
+                className={`inline-flex items-center gap-2 px-6 py-2 rounded-full font-medium transition-all duration-300 ${
                   activeFilter === filter.value
-                    ? 'bg-brown text-white shadow-lg'
-                    : 'bg-gray-100 text-gray-700 hover:bg-beige hover:text-brown'
+                    ? filter.icon
+                      ? 'bg-amber-500 text-white shadow-lg'
+                      : 'bg-brown text-white shadow-lg'
+                    : filter.icon
+                      ? 'bg-amber-50 text-amber-700 hover:bg-amber-100'
+                      : 'bg-gray-100 text-gray-700 hover:bg-beige hover:text-brown'
                 }`}
               >
+                {filter.icon && <Award size={15} />}
                 {filter.label}
               </button>
             ))}
@@ -113,12 +125,17 @@ const Portfolio = () => {
                   transition={{ duration: 0.5, delay: index * 0.05 }}
                   className="break-inside-avoid group relative overflow-hidden rounded-lg shadow-lg cursor-pointer"
                 >
-                  <img
+                  <LazyImage
                     src={getImageUrl(image.image)}
                     alt={image.title || 'Portfolio'}
-                    loading="lazy"
                     className="w-full h-auto transition-transform duration-500 group-hover:scale-110"
                   />
+                  {image.titree && (
+                    <div className="absolute top-3 right-3 flex items-center gap-1 px-2 py-1 bg-amber-500/90 backdrop-blur-sm text-white rounded-full text-xs font-medium z-10">
+                      <Award size={12} />
+                      Titrée
+                    </div>
+                  )}
                   <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-6">
                     <div>
                       {image.title && (

@@ -1,15 +1,18 @@
 import { Link } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import { useData } from '../../context/DataContext';
+import usePageTitle from '../../hooks/usePageTitle';
 import HeroCarousel from '../../components/HeroCarousel';
 import ServiceCard from '../../components/ServiceCard';
 import BlogCard from '../../components/BlogCard';
 import TestimonialCard from '../../components/TestimonialCard';
+import LazyImage from '../../components/LazyImage';
 import { Camera, Heart, Star, Instagram, Facebook } from 'lucide-react';
 import { motion } from 'framer-motion';
 import { mediaStaticAPI, getImageUrl } from '../../utils/api';
 
 const Home = () => {
+  usePageTitle('Accueil');
   const { prestations, blog, config, testimonials } = useData();
   const [carouselImages, setCarouselImages] = useState([]);
   const [bienvenueImage, setBienvenueImage] = useState(null);
@@ -95,10 +98,9 @@ const Home = () => {
                 viewport={{ once: true }}
                 className="order-2 lg:order-1 lg:col-span-1"
               >
-                <img
+                <LazyImage
                   src={bienvenueImage}
                   alt="Bienvenue"
-                  loading="lazy"
                   className="w-full h-auto rounded-lg shadow-lg object-cover"
                 />
               </motion.div>
@@ -182,12 +184,13 @@ const Home = () => {
               viewport={{ once: true }}
               className="lg:col-span-1"
             >
-              <img
-                src={pourquoiChoisirImage || 'https://images.unsplash.com/photo-1554048612-b6a482bc67e5?w=800'}
-                alt="Pourquoi me choisir"
-                loading="lazy"
-                className="w-full h-auto rounded-lg shadow-lg object-cover"
-              />
+              {pourquoiChoisirImage && (
+                <LazyImage
+                  src={pourquoiChoisirImage}
+                  alt="Pourquoi me choisir"
+                  className="w-full h-auto rounded-lg shadow-lg object-cover"
+                />
+              )}
             </motion.div>
           </div>
         </div>

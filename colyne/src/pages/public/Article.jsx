@@ -4,6 +4,8 @@ import { motion } from 'framer-motion';
 import { Calendar, Tag, ArrowLeft, Facebook, Twitter, Link as LinkIcon } from 'lucide-react';
 import { useState } from 'react';
 import { getImageUrl } from '../../utils/api';
+import usePageTitle from '../../hooks/usePageTitle';
+import LazyImage from '../../components/LazyImage';
 
 const Article = () => {
   const { slug } = useParams();
@@ -15,6 +17,8 @@ const Article = () => {
   const relatedArticles = blog.filter((post) => 
     post.slug !== slug && post.category === article?.category
   ).slice(0, 3);
+
+  usePageTitle(article ? article.title : null);
 
   if (!article) {
     return <Navigate to="/blog" replace />;
@@ -33,7 +37,7 @@ const Article = () => {
   const publishedDate = article.date || article.createdAt;
   const formattedDate = formatDate(publishedDate);
   const mainImage = article.mainImage || article.featured_image;
-  const mainImageUrl = mainImage ? getImageUrl(mainImage) : 'https://images.unsplash.com/photo-1452457807411-4979b707c5be?w=1920';
+  const mainImageUrl = mainImage ? getImageUrl(mainImage) : null;
 
   const handleCommentSubmit = (e) => {
     e.preventDefault();
@@ -62,13 +66,16 @@ const Article = () => {
       </div>
 
       {/* Article Header */}
-      <section className="relative h-[400px] md:h-[500px]">
-        <img
-          src={mainImageUrl}
-          alt={article.title}
-          loading="lazy"
-          className="w-full h-full object-cover"
-        />
+      <section className="relative h-[400px] md:h-[500px]"
+        style={!mainImageUrl ? { background: 'linear-gradient(135deg, #3C1518 0%, #6B3A2A 50%, #A67C5B 100%)' } : undefined}
+      >
+        {mainImageUrl && (
+          <LazyImage
+            src={mainImageUrl}
+            alt={article.title}
+            className="w-full h-full object-cover"
+          />
+        )}
         <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/30 to-transparent" />
         <div className="absolute inset-0 flex items-center justify-center">
           <motion.div
@@ -112,14 +119,14 @@ const Article = () => {
             >
               {/* Excerpt */}
               <div className="bg-beige-light p-6 rounded-lg mb-8">
-                <p className="text-lg text-gray-700 leading-relaxed italic">
+                <p className="text-lg text-gray-700 leading-relaxed italic whitespace-pre-line">
                   {article.excerpt}
                 </p>
               </div>
 
               {/* Content */}
               <div className="prose prose-lg max-w-none">
-                <p className="text-gray-700 leading-relaxed mb-6">
+                <p className="text-gray-700 leading-relaxed mb-6 whitespace-pre-line">
                   {article.content}
                 </p>
 
@@ -127,7 +134,8 @@ const Article = () => {
                 {article.gallery && article.gallery.length > 0 && (
                   <div className="my-12 grid grid-cols-1 md:grid-cols-2 gap-6">
                     {article.gallery.map((image, index) => {
-                      const galleryImage = getImageUrl(image) || 'https://images.unsplash.com/photo-1452457807411-4979b707c5be?w=600';
+                      const galleryImage = getImageUrl(image);
+                      if (!galleryImage) return null;
                       return (
                         <motion.div
                           key={index}
@@ -137,10 +145,9 @@ const Article = () => {
                           viewport={{ once: true }}
                           className="rounded-lg overflow-hidden shadow-lg"
                         >
-                          <img
+                          <LazyImage
                             src={galleryImage}
                             alt={`Galerie ${index + 1}`}
-                            loading="lazy"
                             className="w-full h-64 object-cover hover:scale-110 transition-transform duration-500"
                           />
                         </motion.div>
@@ -247,19 +254,27 @@ const Article = () => {
 
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
               {relatedArticles.map((post) => {
-                const relatedImage = getImageUrl(post.mainImage || post.featured_image) || 'https://images.unsplash.com/photo-1452457807411-4979b707c5be?w=600';
+                const relatedImage = getImageUrl(post.mainImage || post.featured_image);
                 const relatedDate = formatDate(post.date || post.createdAt);
 
                 return (
                   <Link key={post._id || post.id} to={`/blog/${post.slug}`} className="group">
                     <div className="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-xl transition-shadow">
                       <div className="relative h-48 overflow-hidden">
-                        <img
-                          src={relatedImage}
-                          alt={post.title}
-                          loading="lazy"
-                          className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
-                        />
+                        {relatedImage ? (
+                          <LazyImage
+                            src={relatedImage}
+                            alt={post.title}
+                            className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+                          />
+                        ) : (
+                          <div className="w-full h-full flex items-center justify-center" style={{ backgroundColor: '#F5EFE6' }}>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" style={{ color: '#C4A882', opacity: 0.5 }}>
+                              <path d="M14.5 4h-5L7 7H4a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2h-3l-2.5-3z"/>
+                              <circle cx="12" cy="13" r="3"/>
+                            </svg>
+                          </div>
+                        )}
                       </div>
                       <div className="p-6">
                         <h3 className="font-display font-semibold text-lg text-gray-900 mb-2 line-clamp-2 group-hover:text-brown transition-colors">

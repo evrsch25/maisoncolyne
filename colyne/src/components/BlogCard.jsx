@@ -2,6 +2,7 @@ import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { Calendar, ArrowRight } from 'lucide-react';
 import { getImageUrl } from '../utils/api';
+import LazyImage from './LazyImage';
 
 const BlogCard = ({ post }) => {
   const formatDate = (dateString) => {
@@ -15,7 +16,7 @@ const BlogCard = ({ post }) => {
   };
 
   const imagePath = post.mainImage || post.featured_image;
-  const imageUrl = imagePath ? getImageUrl(imagePath) : 'https://images.unsplash.com/photo-1452457807411-4979b707c5be?w=600';
+  const imageUrl = imagePath ? getImageUrl(imagePath) : null;
   const publishedDate = post.date || post.createdAt;
   const formattedDate = formatDate(publishedDate);
 
@@ -30,12 +31,20 @@ const BlogCard = ({ post }) => {
       {/* Image */}
       <Link to={`/blog/${post.slug}`} className="block">
         <div className="relative h-48 sm:h-56 overflow-hidden">
-          <img
-            src={imageUrl}
-            alt={post.title}
-            loading="lazy"
-            className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
-          />
+          {imageUrl ? (
+            <LazyImage
+              src={imageUrl}
+              alt={post.title}
+              className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+            />
+          ) : (
+            <div className="w-full h-full flex items-center justify-center" style={{ backgroundColor: '#F5EFE6' }}>
+              <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" style={{ color: '#C4A882', opacity: 0.5 }}>
+                <path d="M14.5 4h-5L7 7H4a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2h-3l-2.5-3z"/>
+                <circle cx="12" cy="13" r="3"/>
+              </svg>
+            </div>
+          )}
           {post.category && (
             <span className="absolute top-3 left-3 sm:top-4 sm:left-4 px-2 py-0.5 sm:px-3 sm:py-1 bg-brown text-white text-xs font-medium rounded-full">
               {post.category}
@@ -59,7 +68,7 @@ const BlogCard = ({ post }) => {
           </h3>
         </Link>
 
-        <p className="text-sm sm:text-base text-gray-600 mb-3 sm:mb-4 line-clamp-3">
+        <p className="text-sm sm:text-base text-gray-600 mb-3 sm:mb-4 line-clamp-3 whitespace-pre-line">
           {post.excerpt}
         </p>
 

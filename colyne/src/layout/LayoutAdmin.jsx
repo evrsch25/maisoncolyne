@@ -9,7 +9,8 @@ import {
   Menu,
   X,
   MessageSquare,
-  Mail
+  Mail,
+  Megaphone
 } from 'lucide-react';
 import { useState } from 'react';
 
@@ -29,7 +30,9 @@ const LayoutAdmin = () => {
     { path: '/admin/media', label: 'Médias Statiques', icon: Image },
     { path: '/admin/messages', label: 'Messages de contact', icon: Mail },
     { path: '/admin/testimonials', label: 'Témoignages', icon: MessageSquare },
+    { path: '/admin/actualites', label: 'Actualités', icon: Megaphone },
     { path: '/admin/pages', label: 'Pages', icon: Settings },
+    { path: '/admin/pages-legales', label: 'Pages Légales', icon: FileText },
   ];
 
   const handleLogout = () => {

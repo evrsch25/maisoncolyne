@@ -128,14 +128,6 @@ const Login = () => {
               )}
             </button>
           </form>
-
-          {/* Info */}
-          <div className="mt-8 pt-6 border-t border-gray-200">
-            <p className="text-xs text-gray-500 text-center">
-              <strong>Identifiants:</strong> <code className="bg-gray-100 px-1 py-0.5 rounded">admin@colynephotographe.fr</code> / 
-              <code className="bg-gray-100 px-1 py-0.5 rounded ml-1">colyne2025</code>
-            </p>
-          </div>
         </div>
 
         {/* Back to site */}

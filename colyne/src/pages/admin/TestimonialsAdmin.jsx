@@ -186,7 +186,7 @@ const TestimonialsAdmin = () => {
                     <option value="Séance bébé">Séance bébé</option>
                     <option value="Séance grossesse">Séance grossesse</option>
                     <option value="Séance famille">Séance famille</option>
-                    <option value="Séance iris">Séance iris</option>
+                    <option value="Séance portrait féminin">Séance portrait féminin</option>
                   </select>
                 </div>
 

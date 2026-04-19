@@ -5,11 +5,12 @@ const Portfolio = require('../models/Portfolio');
 // @access  Public
 exports.getAllPortfolioItems = async (req, res, next) => {
   try {
-    const { category, featured } = req.query;
+    const { category, featured, titree } = req.query;
     
     let filter = {};
     if (category) filter.category = category;
     if (featured !== undefined) filter.featured = featured === 'true';
+    if (titree !== undefined) filter.titree = titree === 'true';
 
     const portfolioItems = await Portfolio.find(filter).sort({ order: 1, createdAt: -1 });
 
@@ -123,7 +124,7 @@ exports.deletePortfolioItem = async (req, res, next) => {
 // @access  Public
 exports.getCategories = async (req, res, next) => {
   try {
-    const categories = ['nouveau-ne', 'bebe', 'grossesse', 'famille', 'iris'];
+    const categories = ['nouveau-ne', 'bebe', 'grossesse', 'famille', 'portrait-feminin'];
     
     res.status(200).json({
       success: true,

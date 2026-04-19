@@ -3,11 +3,13 @@ import { useData } from '../../context/DataContext';
 import { motion } from 'framer-motion';
 import ServiceCard from '../../components/ServiceCard';
 import ContactForm from '../../components/ContactForm';
+import usePageTitle from '../../hooks/usePageTitle';
 import HeroCarousel from '../../components/HeroCarousel';
 import { Camera, Clock, MapPin, Check } from 'lucide-react';
 import { mediaStaticAPI, getImageUrl } from '../../utils/api';
 
 const Prestations = () => {
+  usePageTitle('Prestations');
   const { prestations, config } = useData();
   const [carouselImages, setCarouselImages] = useState([]);
   const [loading, setLoading] = useState(true);

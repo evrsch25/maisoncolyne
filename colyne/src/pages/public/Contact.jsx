@@ -2,8 +2,10 @@ import { useData } from '../../context/DataContext';
 import { motion } from 'framer-motion';
 import ContactForm from '../../components/ContactForm';
 import { Mail, Phone, MapPin, Instagram, Facebook, Clock, MessageCircle } from 'lucide-react';
+import usePageTitle from '../../hooks/usePageTitle';
 
 const Contact = () => {
+  usePageTitle('Contact');
   const { config } = useData();
 
   const defaultFaq = [

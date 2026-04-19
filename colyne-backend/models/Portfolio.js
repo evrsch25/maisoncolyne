@@ -8,7 +8,7 @@ const portfolioSchema = new mongoose.Schema({
   category: {
     type: String,
     required: [true, 'La catégorie est requise'],
-    enum: ['nouveau-ne', 'bebe', 'grossesse', 'famille', 'iris'],
+    enum: ['nouveau-ne', 'bebe', 'grossesse', 'famille', 'portrait-feminin'],
     trim: true
   },
   title: {
@@ -22,6 +22,10 @@ const portfolioSchema = new mongoose.Schema({
     default: ''
   },
   featured: {
+    type: Boolean,
+    default: false
+  },
+  titree: {
     type: Boolean,
     default: false
   },

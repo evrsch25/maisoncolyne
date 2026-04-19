@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Plus, Pencil, Trash2, Upload, X, Save, Image as ImageIcon, Tag } from 'lucide-react';
+import { Plus, Pencil, Trash2, Upload, X, Save, Image as ImageIcon, Tag, Award } from 'lucide-react';
 import { portfolioAPI, uploadAPI, getImageUrl, getThumbnailUrl } from '../../utils/api';
 
 const PortfolioAdmin = () => {
@@ -18,7 +18,8 @@ const PortfolioAdmin = () => {
     image: '',
     category: '',
     title: '',
-    description: ''
+    description: '',
+    titree: false
   });
 
   useEffect(() => {
@@ -74,7 +75,8 @@ const PortfolioAdmin = () => {
         image: item.image,
         category: item.category,
         title: item.title || '',
-        description: item.description || ''
+        description: item.description || '',
+        titree: item.titree || false
       });
     } else {
       setCurrentItem(null);
@@ -82,7 +84,8 @@ const PortfolioAdmin = () => {
         image: '',
         category: '',
         title: '',
-        description: ''
+        description: '',
+        titree: false
       });
     }
     setShowModal(true);
@@ -91,12 +94,13 @@ const PortfolioAdmin = () => {
   const closeModal = () => {
     setShowModal(false);
     setCurrentItem(null);
-    setFormData({
-      image: '',
-      category: '',
-      title: '',
-      description: ''
-    });
+      setFormData({
+        image: '',
+        category: '',
+        title: '',
+        description: '',
+        titree: false
+      });
   };
 
   const handleSubmit = async (e) => {
@@ -112,7 +116,8 @@ const PortfolioAdmin = () => {
         image: formData.image,
         category: formData.category,
         title: formData.title,
-        description: formData.description
+        description: formData.description,
+        titree: formData.titree
       };
 
       if (currentItem) {
@@ -156,7 +161,7 @@ const PortfolioAdmin = () => {
       'bebe': 'Bébé',
       'grossesse': 'Grossesse',
       'famille': 'Famille',
-      'iris': 'Iris'
+      'portrait-feminin': 'Portrait féminin'
     };
     return labels[cat] || cat;
   };
@@ -256,6 +261,12 @@ const PortfolioAdmin = () => {
               <div className="flex items-center gap-2 text-sm">
                 <Tag size={14} className="text-gray-400" />
                 <span className="text-gray-600">{getCategoryLabel(item.category)}</span>
+                {item.titree && (
+                  <span className="ml-auto flex items-center gap-1 px-2 py-0.5 bg-amber-100 text-amber-700 rounded-full text-xs font-medium">
+                    <Award size={11} />
+                    Titrée
+                  </span>
+                )}
               </div>
               {item.title && (
                 <p className="mt-1 text-sm font-medium text-gray-800 truncate">{item.title}</p>
@@ -391,6 +402,30 @@ const PortfolioAdmin = () => {
                     className="input-field"
                     placeholder="Description de l'image..."
                   />
+                </div>
+
+                {/* Photo titrée */}
+                <div className="flex items-center justify-between p-4 bg-amber-50 border border-amber-200 rounded-lg">
+                  <div className="flex items-center gap-3">
+                    <Award size={20} className="text-amber-600" />
+                    <div>
+                      <p className="text-sm font-medium text-gray-800">Photo titrée</p>
+                      <p className="text-xs text-gray-500">Récompensée en concours photographique</p>
+                    </div>
+                  </div>
+                  <button
+                    type="button"
+                    onClick={() => setFormData({ ...formData, titree: !formData.titree })}
+                    className={`relative inline-flex h-6 w-11 items-center rounded-full transition-colors ${
+                      formData.titree ? 'bg-amber-500' : 'bg-gray-200'
+                    }`}
+                  >
+                    <span
+                      className={`inline-block h-4 w-4 transform rounded-full bg-white shadow transition-transform ${
+                        formData.titree ? 'translate-x-6' : 'translate-x-1'
+                      }`}
+                    />
+                  </button>
                 </div>
 
                 {/* Boutons */}

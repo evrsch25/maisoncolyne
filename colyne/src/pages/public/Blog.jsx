@@ -3,8 +3,10 @@ import { useData } from '../../context/DataContext';
 import { motion } from 'framer-motion';
 import BlogCard from '../../components/BlogCard';
 import { Search } from 'lucide-react';
+import usePageTitle from '../../hooks/usePageTitle';
 
 const Blog = () => {
+  usePageTitle('Blog');
   const { blog } = useData();
   const [searchTerm, setSearchTerm] = useState('');
   const [selectedCategory, setSelectedCategory] = useState('all');

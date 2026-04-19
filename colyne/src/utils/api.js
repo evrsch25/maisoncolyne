@@ -124,6 +124,19 @@ export const testimonialsAPI = {
   delete: async (id) => (await api.delete(`/testimonials/${id}`)).data
 };
 
+export const pagesLegalesAPI = {
+  get: async (slug) => (await api.get(`/pages-legales/${slug}`)).data,
+  update: async (slug, data) => (await api.put(`/pages-legales/${slug}`, data)).data
+};
+
+export const actualitesAPI = {
+  getPublic: async (params = {}) => (await api.get('/actualites', { params })).data,
+  getAll: async () => (await api.get('/actualites/admin')).data,
+  create: async (data) => (await api.post('/actualites', data)).data,
+  update: async (id, data) => (await api.put(`/actualites/${id}`, data)).data,
+  delete: async (id) => (await api.delete(`/actualites/${id}`)).data
+};
+
 export const getImageUrl = (imagePath) => {
   if (!imagePath) return '';
   if (imagePath.startsWith('http://') || imagePath.startsWith('https://')) {
