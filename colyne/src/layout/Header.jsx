@@ -1,4 +1,4 @@
-import { useState, useEffect, useMemo } from 'react';
+import { useState, useEffect, useMemo, useRef } from 'react';
 import { Link, NavLink } from 'react-router-dom';
 import { Menu, X } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
@@ -9,10 +9,30 @@ const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [activeSubmenu, setActiveSubmenu] = useState(null);
   const [logo, setLogo] = useState(null);
+  const [visible, setVisible] = useState(true);
+  const lastScrollY = useRef(0);
   const { prestations } = useData();
 
   useEffect(() => {
     loadLogo();
+  }, []);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const currentY = window.scrollY;
+      if (currentY < 10) {
+        setVisible(true);
+      } else if (currentY > lastScrollY.current) {
+        setVisible(false);
+        setIsMenuOpen(false);
+      } else {
+        setVisible(true);
+      }
+      lastScrollY.current = currentY;
+    };
+
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
   const loadLogo = async () => {
@@ -76,7 +96,13 @@ const Header = () => {
   const rightMenuItems = menuItems.slice(3); // À propos, Blog, Contact
 
   return (
-    <header className="relative z-50" style={{ backgroundColor: '#FFFBF6' }}>
+    <header
+      className="sticky top-0 z-50 transition-transform duration-300"
+      style={{
+        backgroundColor: '#FFFBF6',
+        transform: visible ? 'translateY(0)' : 'translateY(-100%)',
+      }}
+    >
       <div className="container-custom px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-20 sm:h-28 lg:h-36">
           {/* Navigation Gauche Desktop */}
