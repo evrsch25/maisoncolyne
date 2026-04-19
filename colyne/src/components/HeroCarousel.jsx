@@ -51,18 +51,21 @@ const HeroCarousel = ({ images, autoplay = true, interval = 5000 }) => {
 
   return (
     <div className="relative w-full aspect-video overflow-hidden" style={{ backgroundColor: '#F5EFE6' }}>
-      <AnimatePresence mode="sync">
+      <AnimatePresence>
         <motion.div
           key={currentIndex}
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
-          exit={{ opacity: 0 }}
-          transition={{ duration: 0.25 }}
+          exit={{ opacity: 0, transition: { duration: 0, delay: 0.4 } }}
+          transition={{ duration: 0.4 }}
           className="absolute inset-0"
+          style={{ zIndex: 1 }}
         >
-          <LazyImage
+          <img
             src={slides[currentIndex].url}
             alt={slides[currentIndex].title}
+            loading="eager"
+            decoding="async"
             className="w-full h-full object-cover"
           />
           
