@@ -76,7 +76,7 @@ const Header = () => {
   const rightMenuItems = menuItems.slice(3); // À propos, Blog, Contact
 
   return (
-    <header className="fixed top-0 left-0 right-0 z-50" style={{ backgroundColor: '#FFFBF6' }}>
+    <header className="relative z-50" style={{ backgroundColor: '#FFFBF6' }}>
       <div className="container-custom px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-20 sm:h-28 lg:h-36">
           {/* Navigation Gauche Desktop */}
