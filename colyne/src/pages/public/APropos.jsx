@@ -56,8 +56,7 @@ const APropos = () => {
   return (
     <div className="animate-fade-in">
       {/* Hero Section */}
-      <div className="px-24 sm:px-44 md:px-64 lg:px-80">
-        <section className="relative w-full aspect-[3/2] overflow-hidden"
+        <section className="relative w-full overflow-hidden h-[calc(100vh-5rem)] sm:h-[calc(100vh-7rem)] lg:h-[calc(100vh-9rem)]"
           style={!heroImageUrl ? { background: 'linear-gradient(135deg, #3C1518 0%, #6B3A2A 50%, #A67C5B 100%)' } : undefined}
         >
           {heroImageUrl && (
@@ -84,7 +83,6 @@ const APropos = () => {
             </motion.div>
           </div>
         </section>
-      </div>
 
       {/* Présentation principale */}
       <section className="section-padding bg-white">
