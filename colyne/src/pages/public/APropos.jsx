@@ -56,33 +56,35 @@ const APropos = () => {
   return (
     <div className="animate-fade-in">
       {/* Hero Section */}
-      <section className="relative w-full aspect-video"
-        style={!heroImageUrl ? { background: 'linear-gradient(135deg, #3C1518 0%, #6B3A2A 50%, #A67C5B 100%)' } : undefined}
-      >
-        {heroImageUrl && (
-          <LazyImage
-            src={heroImageUrl}
-            alt={heroImageAlt}
-            className="w-full h-full object-cover"
-          />
-        )}
-        <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/30 to-transparent" />
-        <div className="absolute inset-0 flex items-center justify-center">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-            className="text-center text-white px-4 sm:px-6"
-          >
-            <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-display font-bold mb-3 sm:mb-4">
-              À propos de moi
-            </h1>
-            <p className="text-lg sm:text-xl md:text-2xl text-gray-200">
-              Photographe passionnée à Oye-plage
-            </p>
-          </motion.div>
-        </div>
-      </section>
+      <div className="px-4 sm:px-8 md:px-12 lg:px-16 pt-4 pb-2">
+        <section className="relative w-full aspect-video rounded-2xl overflow-hidden"
+          style={!heroImageUrl ? { background: 'linear-gradient(135deg, #3C1518 0%, #6B3A2A 50%, #A67C5B 100%)' } : undefined}
+        >
+          {heroImageUrl && (
+            <LazyImage
+              src={heroImageUrl}
+              alt={heroImageAlt}
+              className="w-full h-full object-cover"
+            />
+          )}
+          <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/30 to-transparent" />
+          <div className="absolute inset-0 flex items-center justify-center">
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6 }}
+              className="text-center text-white px-4 sm:px-6"
+            >
+              <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-display font-bold mb-3 sm:mb-4">
+                À propos de moi
+              </h1>
+              <p className="text-lg sm:text-xl md:text-2xl text-gray-200">
+                Photographe passionnée à Oye-plage
+              </p>
+            </motion.div>
+          </div>
+        </section>
+      </div>
 
       {/* Présentation principale */}
       <section className="section-padding bg-white">

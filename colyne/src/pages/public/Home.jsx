@@ -83,7 +83,11 @@ const Home = () => {
   return (
     <div className="animate-fade-in">
       {/* Hero Carousel */}
-      <HeroCarousel images={carouselImages} />
+      <div className="px-4 sm:px-8 md:px-12 lg:px-16 pt-4 pb-2">
+        <div className="rounded-2xl overflow-hidden">
+          <HeroCarousel images={carouselImages} />
+        </div>
+      </div>
 
       {/* Section Présentation avec image */}
       <section className="section-padding bg-beige-light">

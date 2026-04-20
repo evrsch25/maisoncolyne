@@ -43,7 +43,13 @@ const Prestations = () => {
   return (
     <div className="animate-fade-in">
       {/* Hero Carousel */}
-      {carouselImages.length > 0 && <HeroCarousel images={carouselImages} />}
+      {carouselImages.length > 0 && (
+        <div className="px-4 sm:px-8 md:px-12 lg:px-16 pt-4 pb-2">
+          <div className="rounded-2xl overflow-hidden">
+            <HeroCarousel images={carouselImages} />
+          </div>
+        </div>
+      )}
 
       {/* Header */}
       <section className="section-padding bg-white">
