@@ -83,7 +83,7 @@ const Home = () => {
   return (
     <div className="animate-fade-in">
       {/* Hero Carousel */}
-      <div className="px-8 sm:px-16 md:px-24 lg:px-32 pt-4 pb-2">
+      <div className="px-16 sm:px-32 md:px-48 lg:px-64 pt-4 pb-2">
         <HeroCarousel images={carouselImages} />
       </div>
 
