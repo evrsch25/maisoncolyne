@@ -29,7 +29,7 @@ const HeroCarousel = ({ images, autoplay = true, interval = 5000 }) => {
 
   if (slides.length === 0) {
     return (
-      <div className="relative w-full aspect-video overflow-hidden"
+      <div className="relative w-full aspect-[3/2] overflow-hidden"
         style={{ background: 'linear-gradient(135deg, #3C1518 0%, #6B3A2A 50%, #A67C5B 100%)' }}
       >
         <div className="absolute inset-0 flex items-center justify-center">
@@ -50,7 +50,7 @@ const HeroCarousel = ({ images, autoplay = true, interval = 5000 }) => {
   }
 
   return (
-    <div className="relative w-full aspect-video overflow-hidden" style={{ backgroundColor: '#111' }}>
+    <div className="relative w-full aspect-[3/2] overflow-hidden" style={{ backgroundColor: '#111' }}>
 
       {/* Couche images — toutes rendues, crossfade CSS pur, sans superposition de texte */}
       {slides.map((slide, index) => (

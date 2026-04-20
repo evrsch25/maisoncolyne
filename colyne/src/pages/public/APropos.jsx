@@ -57,7 +57,7 @@ const APropos = () => {
     <div className="animate-fade-in">
       {/* Hero Section */}
       <div className="px-16 sm:px-32 md:px-48 lg:px-64">
-        <section className="relative w-full aspect-video overflow-hidden"
+        <section className="relative w-full aspect-[3/2] overflow-hidden"
           style={!heroImageUrl ? { background: 'linear-gradient(135deg, #3C1518 0%, #6B3A2A 50%, #A67C5B 100%)' } : undefined}
         >
           {heroImageUrl && (
