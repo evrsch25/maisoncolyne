@@ -83,10 +83,15 @@ const Home = () => {
   return (
     <div className="animate-fade-in">
       {/* Hero Carousel */}
-      <HeroCarousel
-        images={carouselImages}
-        className="h-[calc(100vh-5rem)] sm:h-[calc(100vh-7rem)] lg:h-[calc(100vh-9rem)]"
-      />
+      <div className="mx-auto overflow-hidden"
+        style={{
+          aspectRatio: '3/2',
+          width: 'min(100vw, calc((100vh - 5rem) * 1.5))',
+          maxWidth: '100%'
+        }}
+      >
+        <HeroCarousel images={carouselImages} />
+      </div>
 
       {/* Section Présentation avec image */}
       <section className="section-padding bg-beige-light">
