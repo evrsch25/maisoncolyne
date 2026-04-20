@@ -35,7 +35,7 @@ const PrestationDetail = () => {
       </div>
 
       {/* Hero Image */}
-      <div className="px-16 sm:px-32 md:px-48 lg:px-64">
+      <div className="px-24 sm:px-44 md:px-64 lg:px-80">
       <section className="relative w-full aspect-[3/2] overflow-hidden"
         style={!getImageUrl(prestation.mainImage || prestation.image) ? { background: 'linear-gradient(135deg, #3C1518 0%, #6B3A2A 50%, #A67C5B 100%)' } : undefined}
       >
